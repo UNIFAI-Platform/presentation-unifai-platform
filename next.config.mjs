@@ -7,7 +7,6 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  basePath: '/presentation-unifai-platform',
 }
 
 export default nextConfig

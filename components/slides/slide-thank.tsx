@@ -3,6 +3,8 @@
 import { motion } from "framer-motion"
 import { SlideWrapper, fadeInUp, staggerContainer } from "@/components/ui/slide-wrapper"
 import { Mail, Globe } from "lucide-react"
+import { ThemeLogo } from "@/components/theme-logo"
+import { GradientText } from "@/components/gradient-text"
 
 interface SlideProps {
   isActive: boolean
@@ -19,15 +21,15 @@ export function SlideThank({ isActive }: SlideProps) {
           className="text-center max-w-3xl"
         >
           {/* Logo */}
-          <motion.div variants={fadeInUp} className="mb-6">
-            <img src="/presentation-unifai-platform/images/logo-white.png" alt="UnifAI Logo" className="h-14 md:h-16 mx-auto" />
+          <motion.div variants={fadeInUp} className="mb-8">
+            <ThemeLogo className="h-14 md:h-16 mx-auto" />
           </motion.div>
 
           {/* Thank you */}
           <motion.h2 variants={fadeInUp} className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight">
-            <span className="bg-gradient-to-r from-white via-primary-foreground to-primary bg-clip-text text-transparent">
+            <GradientText>
               Merci
-            </span>
+            </GradientText>
           </motion.h2>
 
           <motion.p variants={fadeInUp} className="text-xl md:text-2xl text-muted-foreground mb-12">

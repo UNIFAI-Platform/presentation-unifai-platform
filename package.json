@@ -7,7 +7,7 @@
     "dev": "next dev",
     "lint": "eslint .",
     "start": "next start",
-    "deploy": "next build && gh-pages -d out"
+    "deploy": "next build && gh-pages -d out -t true"
   },
   "dependencies": {
     "@emotion/is-prop-valid": "latest",

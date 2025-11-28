@@ -16,6 +16,7 @@ import { SlideWhyUnifAI } from "@/components/slides/slide-why-unifai"
 import { SlideConclusion } from "@/components/slides/slide-conclusion"
 import { SlideThank } from "@/components/slides/slide-thank"
 import { SlideNavigation } from "@/components/slide-navigation"
+import { ModeToggle } from "@/components/mode-toggle"
 
 const slides = [
   { id: 1, component: SlideCover },
@@ -101,6 +102,9 @@ export default function Presentation() {
 
   return (
     <main className="relative h-screen w-full overflow-hidden bg-background">
+      <div className="fixed top-4 left-4 z-50">
+        <ModeToggle />
+      </div>
       <SlideNavigation currentSlide={currentSlide} totalSlides={slides.length} onNavigate={goToSlide} />
 
       <motion.div

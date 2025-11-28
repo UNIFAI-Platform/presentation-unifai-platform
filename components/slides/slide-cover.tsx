@@ -3,6 +3,8 @@
 import { motion } from "framer-motion"
 import { SlideWrapper, fadeInUp, staggerContainer } from "@/components/ui/slide-wrapper"
 import { ChevronDown } from "lucide-react"
+import { ThemeLogo } from "@/components/theme-logo"
+import { GradientText } from "@/components/gradient-text"
 
 interface SlideProps {
   isActive: boolean
@@ -20,14 +22,14 @@ export function SlideCover({ isActive }: SlideProps) {
         >
           {/* Logo */}
           <motion.div variants={fadeInUp} className="mb-8">
-            <img src="/presentation-unifai-platform/images/logo-white.png" alt="UnifAI Logo" className="h-16 md:h-20 mx-auto" />
+            <ThemeLogo className="h-16 md:h-20 mx-auto" />
           </motion.div>
 
           {/* Title */}
           <motion.h1 variants={fadeInUp} className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6">
-            <span className="bg-gradient-to-r from-white via-primary-foreground to-primary bg-clip-text text-transparent">
+            <GradientText>
               UnifAI Platform
-            </span>
+            </GradientText>
           </motion.h1>
 
           {/* Subtitle */}
