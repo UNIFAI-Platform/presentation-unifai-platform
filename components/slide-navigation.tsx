@@ -15,7 +15,7 @@ export function SlideNavigation({ currentSlide, totalSlides, onNavigate }: Slide
       initial={{ opacity: 0, x: 20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ delay: 0.5 }}
-      className="fixed right-2 md:right-6 top-1/2 -translate-y-1/2 z-50 flex flex-col items-center gap-3"
+      className="fixed right-6 top-1/2 -translate-y-1/2 z-50 hidden md:flex flex-col items-center gap-3"
     >
       <button
         onClick={() => onNavigate(Math.max(1, currentSlide - 1))}

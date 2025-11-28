@@ -38,53 +38,58 @@ const scenarioSteps = [
 export function SlideScenario({ isActive }: SlideProps) {
   return (
     <SlideWrapper gradient="dark">
-      <div className="h-full flex flex-col justify-center px-6 md:px-12 lg:px-24">
+      <div className="h-full flex flex-col px-6 md:px-12 lg:px-24 pt-20 pb-6 md:py-0 md:justify-center">
         <motion.div
           variants={staggerContainer}
           initial="initial"
           animate={isActive ? "animate" : "initial"}
-          className="max-w-6xl mx-auto w-full"
+          className="max-w-6xl mx-auto w-full h-full md:h-auto flex flex-col"
         >
-          <motion.div variants={fadeInUp} className="mb-4">
-            <span className="text-xs font-mono text-primary/60 uppercase tracking-wider">08 / Scénario Client</span>
-          </motion.div>
+          {/* Header - Fixed top on mobile */}
+          <div className="flex-shrink-0">
+            <motion.div variants={fadeInUp} className="mb-2 md:mb-4">
+              <span className="text-xs font-mono text-primary/60 uppercase tracking-wider">08 / Scénario Client</span>
+            </motion.div>
 
-          <motion.h2 variants={fadeInUp} className="text-3xl md:text-4xl font-bold mb-2 tracking-tight">
-            Scénario Client (Retail)
-          </motion.h2>
+            <motion.h2 variants={fadeInUp} className="text-2xl md:text-4xl font-bold mb-1 md:mb-2 tracking-tight">
+              Scénario Client (Retail)
+            </motion.h2>
 
-          <motion.p variants={fadeInUp} className="text-base text-muted-foreground mb-8">
-            Situation → Interaction → Action → Résultat
-          </motion.p>
+            <motion.p variants={fadeInUp} className="text-sm md:text-base text-muted-foreground mb-4 md:mb-8">
+              Situation → Interaction → Action → Résultat
+            </motion.p>
+          </div>
 
-          {/* Timeline */}
-          <div className="relative">
-            <div className="absolute left-5 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-accent to-green-500 hidden md:block" />
+          {/* Content - Scrollable on mobile */}
+          <div className="flex-1 overflow-y-auto md:overflow-visible min-h-0">
+            <div className="relative">
+              <div className="absolute left-4 md:left-5 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-accent to-green-500 hidden md:block" />
 
-            <div className="space-y-4">
-              {scenarioSteps.map((step, index) => (
-                <motion.div key={index} variants={fadeInUp} className="flex items-start gap-4 md:gap-6">
-                  <div
-                    className={`relative z-10 w-10 h-10 rounded-full bg-card border-2 border-border flex items-center justify-center flex-shrink-0`}
-                  >
-                    <step.icon className={`w-5 h-5 ${step.color}`} />
-                  </div>
-                  <div className="flex-1 p-4 rounded-xl bg-card/30 backdrop-blur-sm border border-border/30">
-                    <h3 className="font-semibold mb-1">{step.title}</h3>
-                    <p className="text-sm text-muted-foreground">{step.description}</p>
-                  </div>
-                </motion.div>
-              ))}
+              <div className="space-y-2 md:space-y-4">
+                {scenarioSteps.map((step, index) => (
+                  <motion.div key={index} variants={fadeInUp} className="flex items-start gap-3 md:gap-6">
+                    <div
+                      className={`relative z-10 w-8 h-8 md:w-10 md:h-10 rounded-full bg-card border-2 border-border flex items-center justify-center flex-shrink-0`}
+                    >
+                      <step.icon className={`w-4 h-4 md:w-5 md:h-5 ${step.color}`} />
+                    </div>
+                    <div className="flex-1 p-3 md:p-4 rounded-xl bg-card/30 backdrop-blur-sm border border-border/30">
+                      <h3 className="text-sm md:text-base font-semibold mb-1">{step.title}</h3>
+                      <p className="text-xs md:text-sm text-muted-foreground">{step.description}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </div>
 
-          {/* Result */}
+          {/* Footer - Fixed bottom on mobile */}
           <motion.div
             variants={fadeInUp}
-            className="mt-8 flex items-center gap-4 p-5 rounded-xl bg-gradient-to-r from-green-500/20 to-accent/20 border border-green-500/30"
+            className="flex-shrink-0 mt-4 md:mt-8 flex items-center gap-3 md:gap-4 p-3 md:p-5 rounded-xl bg-gradient-to-r from-green-500/20 to-accent/20 border border-green-500/30"
           >
-            <Clock className="w-8 h-8 text-green-400 flex-shrink-0" />
-            <p className="text-lg font-semibold">
+            <Clock className="w-6 h-6 md:w-8 md:h-8 text-green-400 flex-shrink-0" />
+            <p className="text-sm md:text-lg font-semibold">
               Action en moins de <span className="text-green-400">5 minutes</span> grâce à l'IA collaborative.
             </p>
           </motion.div>

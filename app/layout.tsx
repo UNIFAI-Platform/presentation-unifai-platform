@@ -12,7 +12,11 @@ const _geistMono = Geist_Mono({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "UnifAI Platform - Présentation",
   description: "Accélérez votre performance grâce à l'IA collaborative",
-    generator: 'v0.app'
+  generator: 'v0.app',
+  icons: {
+    icon: '/images/PngFavicon.png',
+    apple: '/images/PngFavicon.png',
+  },
 }
 
 export default function RootLayout({

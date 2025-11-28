@@ -2,15 +2,16 @@
 
 import { motion } from "framer-motion"
 import { SlideWrapper, fadeInUp, staggerContainer } from "@/components/ui/slide-wrapper"
-import { ChevronDown } from "lucide-react"
+import { ChevronDown, Hand } from "lucide-react"
 import { ThemeLogo } from "@/components/theme-logo"
 import { GradientText } from "@/components/gradient-text"
 
 interface SlideProps {
   isActive: boolean
+  onNext?: () => void
 }
 
-export function SlideCover({ isActive }: SlideProps) {
+export function SlideCover({ isActive, onNext }: SlideProps) {
   return (
     <SlideWrapper gradient="blue">
       <div className="h-full flex flex-col items-center justify-center px-6 md:px-12">
@@ -55,15 +56,47 @@ export function SlideCover({ isActive }: SlideProps) {
           </motion.div>
         </motion.div>
 
-        {/* Scroll Indicator */}
+        {/* Scroll Indicator - Hidden on mobile */}
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2">
+          <motion.button
+            initial={{ opacity: 0, y: 0 }}
+            animate={{ opacity: 1, y: [0, 10, 0] }}
+            transition={{ delay: 1, duration: 2, repeat: Number.POSITIVE_INFINITY }}
+            onClick={onNext}
+            className="flex flex-col items-center gap-2 cursor-pointer hover:scale-110 transition-transform"
+          >
+            <span className="text-xs uppercase tracking-widest text-muted-foreground/50 hover:text-primary/70 transition-colors">Découvrir</span>
+            <ChevronDown className="w-6 h-6 text-primary/50 hover:text-primary transition-colors" />
+          </motion.button>
+        </div>
+
+        {/* Swipe Indicator - Mobile only */}
         <motion.div
-          initial={{ opacity: 0, y: 0 }}
-          animate={{ opacity: 1, y: [0, 10, 0] }}
-          transition={{ delay: 1, duration: 2, repeat: Number.POSITIVE_INFINITY }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.5 }}
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 flex md:hidden flex-col items-center gap-3"
         >
-          <span className="text-xs uppercase tracking-widest text-muted-foreground/50">Découvrir</span>
-          <ChevronDown className="w-6 h-6 text-primary/50" />
+          <span className="text-xs uppercase tracking-widest text-muted-foreground/50">Swiper</span>
+          <div className="relative flex items-center justify-center">
+            {/* Ligne de guidage */}
+            <div className="absolute w-20 h-0.5 bg-muted-foreground/20 rounded-full" />
+            
+            {/* Main animée */}
+            <motion.div
+              animate={{ 
+                x: [-30, 30, -30],
+              }}
+              transition={{ 
+                duration: 2,
+                repeat: Number.POSITIVE_INFINITY,
+                ease: "easeInOut"
+              }}
+              className="relative z-10"
+            >
+              <Hand className="w-6 h-6 text-primary/70 rotate-90" />
+            </motion.div>
+          </div>
         </motion.div>
       </div>
     </SlideWrapper>

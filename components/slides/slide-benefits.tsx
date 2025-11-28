@@ -38,45 +38,50 @@ const benefitCategories = [
 export function SlideBenefits({ isActive }: SlideProps) {
   return (
     <SlideWrapper gradient="teal">
-      <div className="h-full flex flex-col justify-center px-6 md:px-12 lg:px-24">
+      <div className="h-full flex flex-col px-6 md:px-12 lg:px-24 pt-20 pb-6 md:py-0 md:justify-center">
         <motion.div
           variants={staggerContainer}
           initial="initial"
           animate={isActive ? "animate" : "initial"}
-          className="max-w-6xl mx-auto w-full"
+          className="max-w-6xl mx-auto w-full h-full md:h-auto flex flex-col"
         >
-          <motion.div variants={fadeInUp} className="mb-4">
-            <span className="text-xs font-mono text-primary/60 uppercase tracking-wider">10 / Les Bénéfices</span>
-          </motion.div>
+          {/* Header - Fixed top on mobile */}
+          <div className="flex-shrink-0">
+            <motion.div variants={fadeInUp} className="mb-2 md:mb-4">
+              <span className="text-xs font-mono text-primary/60 uppercase tracking-wider">10 / Les Bénéfices</span>
+            </motion.div>
 
-          <motion.h2 variants={fadeInUp} className="text-3xl md:text-5xl font-bold mb-10 tracking-tight">
-            Les Bénéfices Pour Vous
-          </motion.h2>
+            <motion.h2 variants={fadeInUp} className="text-2xl md:text-5xl font-bold mb-4 md:mb-10 tracking-tight">
+              Les Bénéfices Pour Vous
+            </motion.h2>
+          </div>
 
-          {/* Benefits grid */}
-          <div className="grid md:grid-cols-3 gap-6">
-            {benefitCategories.map((category, index) => (
-              <motion.div
-                key={index}
-                variants={fadeInUp}
-                className={`p-6 rounded-xl bg-gradient-to-br ${category.color} backdrop-blur-sm border ${category.borderColor}`}
-              >
-                <div className="flex items-center gap-3 mb-5">
-                  <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center">
-                    <category.icon className={`w-6 h-6 ${category.iconColor}`} />
+          {/* Content - Scrollable on mobile */}
+          <div className="flex-1 overflow-y-auto md:overflow-visible min-h-0">
+            <div className="grid md:grid-cols-3 gap-3 md:gap-6">
+              {benefitCategories.map((category, index) => (
+                <motion.div
+                  key={index}
+                  variants={fadeInUp}
+                  className={`p-4 md:p-6 rounded-xl bg-gradient-to-br ${category.color} backdrop-blur-sm border ${category.borderColor}`}
+                >
+                  <div className="flex items-center gap-2 md:gap-3 mb-3 md:mb-5">
+                    <div className="w-9 h-9 md:w-12 md:h-12 rounded-xl bg-white/10 flex items-center justify-center">
+                      <category.icon className={`w-4 h-4 md:w-6 md:h-6 ${category.iconColor}`} />
+                    </div>
+                    <h3 className="text-lg md:text-xl font-bold">{category.title}</h3>
                   </div>
-                  <h3 className="text-xl font-bold">{category.title}</h3>
-                </div>
-                <ul className="space-y-3">
-                  {category.items.map((item, itemIndex) => (
-                    <li key={itemIndex} className="flex items-start gap-3">
-                      <span className={`w-2 h-2 rounded-full ${category.iconColor.replace("text-", "bg-")} mt-2`} />
-                      <span className="text-foreground/90">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            ))}
+                  <ul className="space-y-2 md:space-y-3">
+                    {category.items.map((item, itemIndex) => (
+                      <li key={itemIndex} className="flex items-start gap-2 md:gap-3">
+                        <span className={`w-1.5 h-1.5 md:w-2 md:h-2 rounded-full ${category.iconColor.replace("text-", "bg-")} mt-1.5 md:mt-2`} />
+                        <span className="text-sm md:text-base text-foreground/90">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </motion.div>
       </div>
