@@ -20,7 +20,7 @@ export function SlideCover({ isActive }: SlideProps) {
         >
           {/* Logo */}
           <motion.div variants={fadeInUp} className="mb-8">
-            <img src="/images/logo-white.png" alt="UnifAI Logo" className="h-16 md:h-20 mx-auto" />
+            <img src="/presentation-unifai-platform/images/logo-white.png" alt="UnifAI Logo" className="h-16 md:h-20 mx-auto" />
           </motion.div>
 
           {/* Title */}

@@ -19,8 +19,8 @@ export function SlideThank({ isActive }: SlideProps) {
           className="text-center max-w-3xl"
         >
           {/* Logo */}
-          <motion.div variants={fadeInUp} className="mb-8">
-            <img src="/images/logo-white.png" alt="UnifAI Logo" className="h-14 md:h-16 mx-auto" />
+          <motion.div variants={fadeInUp} className="mb-6">
+            <img src="/presentation-unifai-platform/images/logo-white.png" alt="UnifAI Logo" className="h-14 md:h-16 mx-auto" />
           </motion.div>
 
           {/* Thank you */}
