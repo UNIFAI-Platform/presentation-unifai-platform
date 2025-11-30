@@ -18,7 +18,9 @@ import { SlideConclusion } from "@/components/slides/slide-conclusion"
 import { SlideThank } from "@/components/slides/slide-thank"
 import { SlideNavigation } from "@/components/slide-navigation"
 import { ModeToggle } from "@/components/mode-toggle"
+
 import { useTheme } from "next-themes"
+import { WaveBackground } from "@/components/ui/wave-background"
 
 // Mapping des gradients par slide
 const slideGradients: Record<number, "blue" | "teal" | "dark"> = {
@@ -115,9 +117,9 @@ export default function Presentation() {
 
       const touchEndX = e.changedTouches[0].clientX
       const touchEndY = e.changedTouches[0].clientY
-      
+
       // Sur mobile: swipe horizontal, sur desktop: swipe vertical
-      const diff = isMobile 
+      const diff = isMobile
         ? touchStart.current.x - touchEndX  // Horizontal pour mobile
         : touchStart.current.y - touchEndY  // Vertical pour desktop
 
@@ -154,6 +156,26 @@ export default function Presentation() {
   const gradientColors = mounted && theme === "light" ? lightGradientColors : darkGradientColors
   const colors = gradientColors[currentGradient]
 
+  const variants = {
+    enter: (direction: number) => ({
+      x: direction > 0 ? (isMobile ? 40 : 60) : (isMobile ? -40 : -60),
+      opacity: 0,
+      scale: 0.92,
+    }),
+    center: {
+      zIndex: 1,
+      x: 0,
+      opacity: 1,
+      scale: 1,
+    },
+    exit: (direction: number) => ({
+      zIndex: 0,
+      x: direction < 0 ? (isMobile ? 40 : 60) : (isMobile ? -40 : -60),
+      opacity: 0,
+      scale: 0.92,
+    }),
+  }
+
   return (
     <main className="relative h-screen w-full overflow-hidden">
       {/* Fond animé avec transition smooth (Desktop ET Mobile) */}
@@ -162,11 +184,13 @@ export default function Presentation() {
         animate={{
           background: `linear-gradient(135deg, ${colors.from} 0%, ${colors.via} 50%, ${colors.to} 100%)`,
         }}
-        transition={{ 
-          duration: 0.8, 
+        transition={{
+          duration: 0.8,
           ease: [0.43, 0.13, 0.23, 0.96]
         }}
-      />
+      >
+        <WaveBackground />
+      </motion.div>
 
       <div className="fixed top-4 left-4 z-50">
         <ModeToggle />
@@ -174,25 +198,15 @@ export default function Presentation() {
       <SlideNavigation currentSlide={currentSlide} totalSlides={slides.length} onNavigate={goToSlide} />
 
       {/* Animation Combinée (style Canva) - Mobile ET Desktop */}
-      <AnimatePresence mode="sync" initial={false}>
+      <AnimatePresence mode="sync" initial={false} custom={direction}>
         <motion.div
           key={currentSlide}
+          custom={direction}
+          variants={variants}
+          initial="enter"
+          animate="center"
+          exit="exit"
           className="absolute inset-0 h-screen w-full overflow-hidden z-10"
-          initial={{ 
-            opacity: 0, 
-            scale: 0.92,
-            x: direction >= 0 ? (isMobile ? 40 : 60) : (isMobile ? -40 : -60),
-          }}
-          animate={{ 
-            opacity: 1, 
-            scale: 1,
-            x: 0,
-          }}
-          exit={{ 
-            opacity: 0, 
-            scale: 0.92,
-            x: direction >= 0 ? (isMobile ? -40 : -60) : (isMobile ? 40 : 60),
-          }}
           transition={{
             duration: isMobile ? 0.4 : 0.6,
             ease: [0.32, 0.72, 0, 1],

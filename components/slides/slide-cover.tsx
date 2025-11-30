@@ -5,6 +5,7 @@ import { SlideWrapper, fadeInUp, staggerContainer } from "@/components/ui/slide-
 import { ChevronDown, Hand } from "lucide-react"
 import { ThemeLogo } from "@/components/theme-logo"
 import { GradientText } from "@/components/gradient-text"
+import { WhatsAppIcon, TelegramIcon, AIBotIcon, N8nIcon } from "@/components/icons"
 
 interface SlideProps {
   isActive: boolean
@@ -14,7 +15,39 @@ interface SlideProps {
 export function SlideCover({ isActive, onNext }: SlideProps) {
   return (
     <SlideWrapper gradient="blue">
-      <div className="h-full flex flex-col items-center justify-center px-6 md:px-12">
+      {/* Floating Icons Background */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <motion.div
+          animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }}
+          transition={{ duration: 5, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+          className="absolute top-1/4 left-1/4 text-primary/10"
+        >
+          <WhatsAppIcon className="w-16 h-16" />
+        </motion.div>
+        <motion.div
+          animate={{ y: [0, 20, 0], rotate: [0, -5, 0] }}
+          transition={{ duration: 6, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut", delay: 1 }}
+          className="absolute top-1/3 right-1/4 text-primary/10"
+        >
+          <TelegramIcon className="w-20 h-20" />
+        </motion.div>
+        <motion.div
+          animate={{ y: [0, -15, 0], rotate: [0, 10, 0] }}
+          transition={{ duration: 7, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut", delay: 2 }}
+          className="absolute bottom-1/3 left-1/3 text-primary/10"
+        >
+          <N8nIcon className="w-14 h-14" />
+        </motion.div>
+        <motion.div
+          animate={{ y: [0, 15, 0], rotate: [0, -10, 0] }}
+          transition={{ duration: 8, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut", delay: 0.5 }}
+          className="absolute bottom-1/4 right-1/3 text-primary/10"
+        >
+          <AIBotIcon className="w-24 h-24" />
+        </motion.div>
+      </div>
+
+      <div className="h-full flex flex-col items-center justify-center px-6 md:px-12 relative z-10">
         <motion.div
           variants={staggerContainer}
           initial="initial"
@@ -47,7 +80,7 @@ export function SlideCover({ isActive, onNext }: SlideProps) {
           </motion.p>
 
           {/* Presented by */}
-                    <motion.div
+          <motion.div
             variants={fadeInUp}
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-card/30 backdrop-blur-sm border border-border/50"
           >
@@ -81,13 +114,13 @@ export function SlideCover({ isActive, onNext }: SlideProps) {
           <div className="relative flex items-center justify-center">
             {/* Ligne de guidage */}
             <div className="absolute w-20 h-0.5 bg-muted-foreground/20 rounded-full" />
-            
+
             {/* Main animée */}
             <motion.div
-              animate={{ 
+              animate={{
                 x: [-30, 30, -30],
               }}
-              transition={{ 
+              transition={{
                 duration: 2,
                 repeat: Number.POSITIVE_INFINITY,
                 ease: "easeInOut"
