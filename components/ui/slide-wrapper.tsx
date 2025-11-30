@@ -23,28 +23,9 @@ const lightGradients = {
   dark: "bg-gradient-to-br from-[#f5f7fa] via-[#eef2f7] to-[#e8eef5]",
 }
 
-export function SlideWrapper({ children, className = "", gradient = "blue" }: SlideWrapperProps) {
-  const { theme } = useTheme()
-  const [mounted, setMounted] = useState(false)
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
-  // Use dark gradient by default during SSR to avoid flash
-  const gradientClass = mounted 
-    ? (theme === "dark" ? darkGradients[gradient] : lightGradients[gradient])
-    : darkGradients[gradient]
-
+export function SlideWrapper({ children, className = "" }: SlideWrapperProps) {
   return (
-    <div className={`relative h-full w-full ${gradientClass} ${className}`}>
-      {/* Subtle grid pattern overlay */}
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0wIDBoNjB2NjBIMHoiLz48cGF0aCBkPSJNMzAgMzBtLTEgMGExIDEgMCAxIDAgMiAwYTEgMSAwIDEgMCAtMiAwIiBmaWxsPSJyZ2JhKDI1NSwgMjU1LCAyNTUsIDAuMDMpIi8+PC9nPjwvc3ZnPg==')] opacity-50" />
-
-      {/* Glow effects */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-accent/10 rounded-full blur-3xl" />
-
+    <div className={`relative h-full w-full bg-transparent ${className}`}>
       <div className="relative z-10 h-full">{children}</div>
     </div>
   )
