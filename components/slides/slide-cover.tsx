@@ -2,10 +2,9 @@
 
 import { motion } from "framer-motion"
 import { SlideWrapper, fadeInUp, staggerContainer } from "@/components/ui/slide-wrapper"
-import { ChevronDown, Hand } from "lucide-react"
+import { ChevronDown, Hand, Sparkles } from "lucide-react"
 import { ThemeLogo } from "@/components/theme-logo"
 import { GradientText } from "@/components/gradient-text"
-import { WhatsAppIcon, TelegramIcon, AIBotIcon, N8nIcon } from "@/components/icons"
 
 interface SlideProps {
   isActive: boolean
@@ -15,37 +14,15 @@ interface SlideProps {
 export function SlideCover({ isActive, onNext }: SlideProps) {
   return (
     <SlideWrapper gradient="blue">
-      {/* Floating Icons Background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div
-          animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }}
-          transition={{ duration: 5, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
-          className="absolute top-1/4 left-1/4 text-primary/10"
-        >
-          <WhatsAppIcon className="w-16 h-16" />
-        </motion.div>
-        <motion.div
-          animate={{ y: [0, 20, 0], rotate: [0, -5, 0] }}
-          transition={{ duration: 6, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut", delay: 1 }}
-          className="absolute top-1/3 right-1/4 text-primary/10"
-        >
-          <TelegramIcon className="w-20 h-20" />
-        </motion.div>
-        <motion.div
-          animate={{ y: [0, -15, 0], rotate: [0, 10, 0] }}
-          transition={{ duration: 7, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut", delay: 2 }}
-          className="absolute bottom-1/3 left-1/3 text-primary/10"
-        >
-          <N8nIcon className="w-14 h-14" />
-        </motion.div>
-        <motion.div
-          animate={{ y: [0, 15, 0], rotate: [0, -10, 0] }}
-          transition={{ duration: 8, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut", delay: 0.5 }}
-          className="absolute bottom-1/4 right-1/3 text-primary/10"
-        >
-          <AIBotIcon className="w-24 h-24" />
-        </motion.div>
-      </div>
+      {/* Decorative Sparkle - Bottom Right */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 1.5, duration: 0.8 }}
+        className="absolute bottom-8 right-8 md:bottom-12 md:right-12 z-20"
+      >
+        <Sparkles className="w-10 h-10 md:w-14 md:h-14 text-muted-foreground/30" />
+      </motion.div>
 
       <div className="h-full flex flex-col items-center justify-center px-6 md:px-12 relative z-10">
         <motion.div
@@ -75,7 +52,7 @@ export function SlideCover({ isActive, onNext }: SlideProps) {
           </motion.p>
 
           {/* Description */}
-          <motion.p variants={fadeInUp} className="text-base md:text-lg text-primary/80 mb-12">
+          <motion.p variants={fadeInUp} className="text-base md:text-lg text-primary mb-12">
             Solution dédiée aux entreprises Retail & E-commerce
           </motion.p>
 
@@ -84,23 +61,34 @@ export function SlideCover({ isActive, onNext }: SlideProps) {
             variants={fadeInUp}
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-card/30 backdrop-blur-sm border border-border/50"
           >
-            <span className="text-sm font-medium text-muted-foreground">Présenté par</span>
+            <span className="text-sm font-medium text-muted-foreground">Présenté par:</span>
             <span className="text-sm font-bold text-foreground">L'équipe UnifAI</span>
           </motion.div>
         </motion.div>
 
         {/* Scroll Indicator - Hidden on mobile */}
         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2">
-          <motion.button
-            initial={{ opacity: 0, y: 0 }}
-            animate={{ opacity: 1, y: [0, 10, 0] }}
-            transition={{ delay: 1, duration: 2, repeat: Number.POSITIVE_INFINITY }}
-            onClick={onNext}
-            className="flex flex-col items-center gap-2 cursor-pointer hover:scale-110 transition-transform"
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.5 }}
+            className="flex flex-col items-center"
           >
-            <span className="text-xs uppercase tracking-widest text-muted-foreground/50 hover:text-primary/70 transition-colors">Découvrir</span>
-            <ChevronDown className="w-6 h-6 text-primary/50 hover:text-primary transition-colors" />
-          </motion.button>
+            {/* Progress line */}
+            <div className="w-8 h-0.5 bg-primary/60 rounded-full mb-4" />
+            
+            <motion.button
+              animate={{ y: [0, 8, 0] }}
+              transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+              onClick={onNext}
+              className="flex flex-col items-center gap-2 cursor-pointer hover:scale-110 transition-transform"
+            >
+              <span className="text-xs uppercase tracking-widest text-muted-foreground/60 hover:text-primary/70 transition-colors">
+                Découvrir
+              </span>
+              <ChevronDown className="w-5 h-5 text-muted-foreground/50 hover:text-primary transition-colors" />
+            </motion.button>
+          </motion.div>
         </div>
 
         {/* Swipe Indicator - Mobile only */}

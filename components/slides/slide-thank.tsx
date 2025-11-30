@@ -39,11 +39,11 @@ export function SlideThank({ isActive }: SlideProps) {
           {/* Contact info */}
           <motion.div variants={fadeInUp} className="flex flex-col md:flex-row items-center justify-center gap-6">
             <a
-              href="mailto:unifaiplatform@gmail.com"
+              href="mailto:ahmed.omrane@unifaiplatform.ai"
               className="flex items-center gap-3 px-6 py-3 rounded-full bg-card/30 backdrop-blur-sm border border-border/50 hover:border-primary/50 transition-colors"
             >
               <Mail className="w-5 h-5 text-primary" />
-              <span>unifaiplatform@gmail.com</span>
+              <span>ahmed.omrane@unifaiplatform.ai</span>
             </a>
 
             <a
@@ -53,7 +53,7 @@ export function SlideThank({ isActive }: SlideProps) {
               className="flex items-center gap-3 px-6 py-3 rounded-full bg-primary/20 border border-primary/50 hover:bg-primary/30 transition-colors"
             >
               <Globe className="w-5 h-5 text-primary" />
-              <span>unifaiplatform.ai</span>
+              <span>Unifai Platform</span>
             </a>
           </motion.div>
 

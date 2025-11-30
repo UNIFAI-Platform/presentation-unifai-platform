@@ -15,9 +15,12 @@ import { SlideAutomation } from "@/components/slides/slide-automation"
 import { SlideBenefits } from "@/components/slides/slide-benefits"
 import { SlideWhyUnifAI } from "@/components/slides/slide-why-unifai"
 import { SlideConclusion } from "@/components/slides/slide-conclusion"
+import { SlideClient } from "@/components/slides/slide-client"
 import { SlideThank } from "@/components/slides/slide-thank"
+import { SlideChat } from "@/components/slides/slide-chat"
 import { SlideNavigation } from "@/components/slide-navigation"
 import { ModeToggle } from "@/components/mode-toggle"
+import { FloatingIcons } from "@/components/floating-icons"
 
 import { useTheme } from "next-themes"
 import { WaveBackground } from "@/components/ui/wave-background"
@@ -36,7 +39,9 @@ const slideGradients: Record<number, "blue" | "teal" | "dark"> = {
   10: "teal",  // Benefits
   11: "blue",  // WhyUnifAI
   12: "dark",  // Conclusion
-  13: "blue",  // Thank
+  13: "teal",  // Client
+  14: "blue",  // Thank
+  15: "dark",  // Chat
 }
 
 // Couleurs hex pour animation smooth du fond
@@ -65,7 +70,9 @@ const slides = [
   { id: 10, component: SlideBenefits },
   { id: 11, component: SlideWhyUnifAI },
   { id: 12, component: SlideConclusion },
-  { id: 13, component: SlideThank },
+  { id: 13, component: SlideClient },
+  { id: 14, component: SlideThank },
+  { id: 15, component: SlideChat },
 ]
 
 export default function Presentation() {
@@ -190,6 +197,7 @@ export default function Presentation() {
         }}
       >
         <WaveBackground />
+        <FloatingIcons currentSlide={currentSlide} />
       </motion.div>
 
       <div className="fixed top-4 left-4 z-50">
@@ -217,7 +225,7 @@ export default function Presentation() {
             return currentSlide === 1 ? (
               <SlideComponent isActive={true} onNext={() => goToSlide(2)} />
             ) : (
-              <SlideComponent isActive={true} />
+              <SlideComponent isActive={true} onNavigate={goToSlide} />
             )
           })()}
         </motion.div>

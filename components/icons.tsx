@@ -1,55 +1,364 @@
 import type { SVGProps } from "react"
+import {
+  SiOpenai,
+  SiAnthropic,
+  SiGooglegemini,
+  SiMeta,
+  SiHuggingface,
+  SiN8N,
+  SiZapier,
+  SiShopify,
+  SiWoocommerce,
+  SiMagento,
+  SiPrestashop,
+  SiBigcommerce,
+  SiOdoo,
+  SiSap,
+  SiWhatsapp,
+  SiTelegram,
+  SiTwilio,
+  SiSlack,
+  SiDiscord,
+  SiGmail,
+  SiNotion,
+  SiTrello,
+  SiAsana,
+  SiGithub,
+  SiGitlab,
+  SiTableau,
+  SiGoogleanalytics,
+  SiLooker,
+  SiMetabase,
+  SiAmazonwebservices,
+  SiGooglecloud,
+  SiVercel,
+  SiDigitalocean,
+  SiCloudflare,
+  SiDocker,
+  SiSupabase,
+  SiPostgresql,
+  SiRedis,
+  SiSalesforce,
+  SiHubspot,
+  SiOracle,
+  SiLinkedin,
+  SiX,
+} from "react-icons/si"
 
-export function WhatsAppIcon(props: SVGProps<SVGSVGElement>) {
-    return (
-        <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-        </svg>
-    )
+// Type for icon wrapper props - compatible with both SVG props and react-icons
+type IconProps = SVGProps<SVGSVGElement> & { className?: string; size?: number | string }
+
+// --- AI Models ---
+
+export function OpenAIIcon(props: IconProps) {
+  return <SiOpenai {...props} />
 }
 
-export function TelegramIcon(props: SVGProps<SVGSVGElement>) {
-    return (
-        <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
-            <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
-        </svg>
-    )
+export function AnthropicIcon(props: IconProps) {
+  return <SiAnthropic {...props} />
 }
 
-export function N8nIcon(props: SVGProps<SVGSVGElement>) {
-    return (
-        <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
-            <path d="M12.924 6.786c-.576-1.053-2.09-1.053-2.666 0l-1.97 3.603-1.97 3.603c-.576 1.053.18 2.436 1.333 2.436h3.94c1.153 0 1.91-1.383 1.333-2.436l-1.97-3.603-1.97-3.603z" />
-            <path d="M22.615 11.632c-.576-1.053-2.09-1.053-2.666 0l-1.97 3.603-1.97 3.603c-.576 1.053.18 2.436 1.333 2.436h3.94c1.153 0 1.91-1.383 1.333-2.436l-1.97-3.603-1.97-3.603z" opacity="0.5" />
-            <path d="M12.924 16.478c-.576-1.053-2.09-1.053-2.666 0l-1.97 3.603-1.97 3.603c-.576 1.053.18 2.436 1.333 2.436h3.94c1.153 0 1.91-1.383 1.333-2.436l-1.97-3.603-1.97-3.603z" opacity="0.75" />
-            <path d="M3.233 11.632c-.576-1.053-2.09-1.053-2.666 0L-.604 15.235l-1.97 3.603c-.576 1.053.18 2.436 1.333 2.436h3.94c1.153 0 1.91-1.383 1.333-2.436l-1.97-3.603-1.97-3.603z" opacity="0.25" />
-        </svg>
-    )
+export function GoogleGeminiIcon(props: IconProps) {
+  return <SiGooglegemini {...props} />
 }
 
-export function AIBotIcon(props: SVGProps<SVGSVGElement>) {
-    return (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
-            <rect x="3" y="11" width="18" height="10" rx="2" />
-            <circle cx="12" cy="5" r="2" />
-            <path d="M12 7v4" />
-            <line x1="8" y1="16" x2="8" y2="16" />
-            <line x1="16" y1="16" x2="16" y2="16" />
-        </svg>
-    )
+export function MetaIcon(props: IconProps) {
+  return <SiMeta {...props} />
 }
 
-export function AutomationIcon(props: SVGProps<SVGSVGElement>) {
-    return (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
-            <path d="M12 2v4" />
-            <path d="M12 18v4" />
-            <path d="M4.93 4.93l2.83 2.83" />
-            <path d="M16.24 16.24l2.83 2.83" />
-            <path d="M2 12h4" />
-            <path d="M18 12h4" />
-            <path d="M4.93 19.07l2.83-2.83" />
-            <path d="M16.24 7.76l2.83-2.83" />
-        </svg>
-    )
+export function MistralIcon(props: IconProps) {
+  // Mistral AI - custom SVG (M logo pattern)
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
+      <path d="M3 3h4v4H3V3zm7 0h4v4h-4V3zm7 0h4v4h-4V3zM3 10h4v4H3v-4zm14 0h4v4h-4v-4zM3 17h4v4H3v-4zm7 0h4v4h-4v-4zm7 0h4v4h-4v-4zm-7-7h4v4h-4v-4z" />
+    </svg>
+  )
 }
+
+export function HuggingFaceIcon(props: IconProps) {
+  return <SiHuggingface {...props} />
+}
+
+export function CohereIcon(props: IconProps) {
+  // Cohere - custom SVG as it's not in Simple Icons
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
+      <path d="M4.067 13.236c0-2.755 1.723-5.078 4.26-6.02-.31-.09-.633-.14-.967-.14-2.755 0-4.988 2.234-4.988 4.988 0 2.755 2.233 4.989 4.988 4.989.334 0 .657-.05.967-.14-2.537-.942-4.26-3.266-4.26-6.02v-.657zm8.01-7.333c-3.616 0-6.545 2.93-6.545 6.545 0 3.616 2.929 6.545 6.545 6.545 3.615 0 6.544-2.929 6.544-6.545 0-3.615-2.929-6.545-6.544-6.545zm4.543 10.066c-.755.755-1.679 1.27-2.68 1.508-1.173.277-2.415.17-3.525-.3a6.37 6.37 0 0 1-2.012-1.208 6.37 6.37 0 0 1-1.208-2.012c-.47-1.11-.577-2.352-.3-3.525.238-1.001.753-1.925 1.508-2.68.755-.755 1.679-1.27 2.68-1.508 1.173-.277 2.415-.17 3.525.3a6.37 6.37 0 0 1 2.012 1.208 6.37 6.37 0 0 1 1.208 2.012c.47 1.11.577 2.352.3 3.525-.238 1.001-.753 1.925-1.508 2.68z" />
+    </svg>
+  )
+}
+
+// --- Automation ---
+
+export function N8nIcon(props: IconProps) {
+  return <SiN8N {...props} />
+}
+
+export function MakeIcon(props: IconProps) {
+  // Make (Integromat) - custom SVG with concentric circles logo
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
+      <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 18c-4.418 0-8-3.582-8-8s3.582-8 8-8 8 3.582 8 8-3.582 8-8 8zm0-14c-3.314 0-6 2.686-6 6s2.686 6 6 6 6-2.686 6-6-2.686-6-6-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm0-6c-1.105 0-2 .895-2 2s.895 2 2 2 2-.895 2-2-.895-2-2-2z" />
+    </svg>
+  )
+}
+
+export function ZapierIcon(props: IconProps) {
+  return <SiZapier {...props} />
+}
+
+export function PowerAutomateIcon(props: IconProps) {
+  // Microsoft Power Automate - custom SVG
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
+      <path d="M4.406 4.047l7.14 4.168v7.784L4.406 11.83V4.047zM12.453 4l7.14 4.168v7.785l-7.14-4.169V4z" />
+      <path d="M4.406 11.953l7.14 4.168v7.785l-7.14-4.168v-7.785z" opacity="0.6" />
+    </svg>
+  )
+}
+
+// --- Retail / E-commerce ---
+
+export function ShopifyIcon(props: IconProps) {
+  return <SiShopify {...props} />
+}
+
+export function WooCommerceIcon(props: IconProps) {
+  return <SiWoocommerce {...props} />
+}
+
+export function MagentoIcon(props: IconProps) {
+  return <SiMagento {...props} />
+}
+
+export function PrestaShopIcon(props: IconProps) {
+  return <SiPrestashop {...props} />
+}
+
+export function BigCommerceIcon(props: IconProps) {
+  return <SiBigcommerce {...props} />
+}
+
+export function OdooIcon(props: IconProps) {
+  return <SiOdoo {...props} />
+}
+
+export function NetSuiteIcon(props: IconProps) {
+  // Oracle NetSuite - custom SVG (not in Simple Icons)
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
+      <path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.8l6.4 3.2L12 11.2 5.6 8 12 4.8zM4 16.2V9.6l7 3.5v6.6l-7-3.5zm16 0l-7 3.5v-6.6l7-3.5v6.6z" />
+    </svg>
+  )
+}
+
+export function SAPIcon(props: IconProps) {
+  return <SiSap {...props} />
+}
+
+// --- Messaging ---
+
+export function WhatsAppIcon(props: IconProps) {
+  return <SiWhatsapp {...props} />
+}
+
+export function TelegramIcon(props: IconProps) {
+  return <SiTelegram {...props} />
+}
+
+export function TwilioIcon(props: IconProps) {
+  return <SiTwilio {...props} />
+}
+
+export function SlackIcon(props: IconProps) {
+  return <SiSlack {...props} />
+}
+
+export function DiscordIcon(props: IconProps) {
+  return <SiDiscord {...props} />
+}
+
+export function GmailIcon(props: IconProps) {
+  return <SiGmail {...props} />
+}
+
+export function TeamsIcon(props: IconProps) {
+  // Microsoft Teams - custom SVG
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
+      <path d="M20.625 8.25h-3.75v-1.5A2.25 2.25 0 0 0 14.625 4.5h-1.5a2.25 2.25 0 0 0-2.25 2.25v1.5h-3.75a1.5 1.5 0 0 0-1.5 1.5v9a1.5 1.5 0 0 0 1.5 1.5h13.5a1.5 1.5 0 0 0 1.5-1.5v-9a1.5 1.5 0 0 0-1.5-1.5zM12.375 6.75a.75.75 0 0 1 .75-.75h1.5a.75.75 0 0 1 .75.75v1.5h-3v-1.5zm-1.5 9h-3v-1.5h3v1.5zm4.5 0h-3v-1.5h3v1.5zm3 0h-1.5v-1.5h1.5v1.5z" />
+      <circle cx="17.25" cy="4.5" r="2.25" />
+    </svg>
+  )
+}
+
+// --- Collaboration ---
+
+export function NotionIcon(props: IconProps) {
+  return <SiNotion {...props} />
+}
+
+export function TrelloIcon(props: IconProps) {
+  return <SiTrello {...props} />
+}
+
+export function AsanaIcon(props: IconProps) {
+  return <SiAsana {...props} />
+}
+
+export function GitHubIcon(props: IconProps) {
+  return <SiGithub {...props} />
+}
+
+export function GitLabIcon(props: IconProps) {
+  return <SiGitlab {...props} />
+}
+
+// --- Analytics ---
+
+export function PowerBIIcon(props: IconProps) {
+  // Microsoft Power BI - custom SVG (bar chart icon)
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
+      <path d="M10 3a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h3zm7 4a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1h-3a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h3z" />
+    </svg>
+  )
+}
+
+export function TableauIcon(props: IconProps) {
+  return <SiTableau {...props} />
+}
+
+export function GoogleAnalyticsIcon(props: IconProps) {
+  return <SiGoogleanalytics {...props} />
+}
+
+export function LookerIcon(props: IconProps) {
+  return <SiLooker {...props} />
+}
+
+export function MetabaseIcon(props: IconProps) {
+  return <SiMetabase {...props} />
+}
+
+// --- Cloud / Infra ---
+
+export function AWSIcon(props: IconProps) {
+  return <SiAmazonwebservices {...props} />
+}
+
+export function AzureIcon(props: IconProps) {
+  // Microsoft Azure - custom SVG (simplified Azure logo)
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
+      <path d="M5.483 21h13.034l-5.197-6.154 5.697-11.071L5.483 21zM12.727 3l-4.92 7.26L3 17.522 8.17 8.8 12.727 3z" />
+    </svg>
+  )
+}
+
+export function GCPIcon(props: IconProps) {
+  return <SiGooglecloud {...props} />
+}
+
+export function VercelIcon(props: IconProps) {
+  return <SiVercel {...props} />
+}
+
+export function DigitalOceanIcon(props: IconProps) {
+  return <SiDigitalocean {...props} />
+}
+
+export function CloudflareIcon(props: IconProps) {
+  return <SiCloudflare {...props} />
+}
+
+export function DockerIcon(props: IconProps) {
+  return <SiDocker {...props} />
+}
+
+export function SupabaseIcon(props: IconProps) {
+  return <SiSupabase {...props} />
+}
+
+export function PostgreSQLIcon(props: IconProps) {
+  return <SiPostgresql {...props} />
+}
+
+export function RedisIcon(props: IconProps) {
+  return <SiRedis {...props} />
+}
+
+// --- CRM / ERP ---
+
+export function Dynamics365Icon(props: IconProps) {
+  // Microsoft Dynamics 365 - custom SVG (simplified logo)
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
+      <path d="M4 4h7v7H4V4zm9 0h7v7h-7V4zM4 13h7v7H4v-7zm9 3.5a3.5 3.5 0 1 0 7 0 3.5 3.5 0 0 0-7 0z" />
+    </svg>
+  )
+}
+
+export function SalesforceIcon(props: IconProps) {
+  return <SiSalesforce {...props} />
+}
+
+export function HubSpotIcon(props: IconProps) {
+  return <SiHubspot {...props} />
+}
+
+export function OracleIcon(props: IconProps) {
+  return <SiOracle {...props} />
+}
+
+// --- Social ---
+
+export function LinkedInIcon(props: IconProps) {
+  return <SiLinkedin {...props} />
+}
+
+export function TwitterIcon(props: IconProps) {
+  return <SiX {...props} />
+}
+
+// --- Generic Icons ---
+
+export function AIBotIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+      <rect x="3" y="11" width="18" height="10" rx="2" />
+      <circle cx="12" cy="5" r="2" />
+      <path d="M12 7v4" />
+      <circle cx="8" cy="16" r="1" />
+      <circle cx="16" cy="16" r="1" />
+    </svg>
+  )
+}
+
+export function AutomationIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+      <path d="M12 2v4" />
+      <path d="M12 18v4" />
+      <path d="M4.93 4.93l2.83 2.83" />
+      <path d="M16.24 16.24l2.83 2.83" />
+      <path d="M2 12h4" />
+      <path d="M18 12h4" />
+      <path d="M4.93 19.07l2.83-2.83" />
+      <path d="M16.24 7.76l2.83-2.83" />
+    </svg>
+  )
+}
+
+// --- Customer Logo ---
+
+export function CustomerLogo(props: React.ImgHTMLAttributes<HTMLImageElement>) {
+  return (
+    <img 
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/E.Leclerc_logo.svg/1024px-E.Leclerc_logo.svg.png" 
+      alt="E.Leclerc"
+      {...props}
+    />
+  )
+}
+
