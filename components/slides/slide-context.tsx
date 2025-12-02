@@ -3,20 +3,23 @@
 import { motion } from "framer-motion"
 import { SlideWrapper, fadeInUp, fadeInLeft, staggerContainer } from "@/components/ui/slide-wrapper"
 import { TrendingUp, Database, Zap, Layers, Clock } from "lucide-react"
+import { useLocale } from "@/components/locale-provider"
 
 interface SlideProps {
   isActive: boolean
 }
 
-const contextItems = [
-  { icon: TrendingUp, text: "Explosion du nombre de produits et sources de données" },
-  { icon: Database, text: "Difficulté à garantir une donnée fiable et cohérente" },
-  { icon: Zap, text: "Besoin d'une réponse rapide aux fluctuations (stocks, ventes, réassorts)" },
-  { icon: Layers, text: "Multiplication des outils → perte de temps, décalage d'information" },
-  { icon: Clock, text: "Importance de la réactivité opérationnelle" },
-]
-
 export function SlideContext({ isActive }: SlideProps) {
+  const { t } = useLocale()
+  
+  const contextItems = [
+    { icon: TrendingUp, text: t('slide2.items.item1') },
+    { icon: Database, text: t('slide2.items.item2') },
+    { icon: Zap, text: t('slide2.items.item3') },
+    { icon: Layers, text: t('slide2.items.item4') },
+    { icon: Clock, text: t('slide2.items.item5') },
+  ]
+
   return (
     <SlideWrapper gradient="teal">
       <div className="h-full flex flex-col px-6 md:px-12 lg:px-24 pt-20 pb-6 md:py-0 md:justify-center">
@@ -29,11 +32,11 @@ export function SlideContext({ isActive }: SlideProps) {
           {/* Header - Fixed top on mobile */}
           <div className="flex-shrink-0">
             <motion.div variants={fadeInUp} className="mb-2 md:mb-4">
-              <span className="text-xs font-mono text-primary/60 uppercase tracking-wider">02 / Le Contexte</span>
+              <span className="text-xs font-mono text-primary/60 uppercase tracking-wider">{t('slide2.section')}</span>
             </motion.div>
 
             <motion.h2 variants={fadeInUp} className="text-2xl md:text-5xl font-bold mb-2 md:mb-4 tracking-tight">
-              Le retail évolue rapidement
+              {t('slide2.title')}
             </motion.h2>
 
             <motion.div
@@ -67,7 +70,7 @@ export function SlideContext({ isActive }: SlideProps) {
             className="flex-shrink-0 mt-4 md:mt-8 p-3 md:p-5 rounded-xl bg-gradient-to-r from-primary/20 to-accent/20 border border-primary/30"
           >
             <p className="text-sm md:text-xl font-semibold text-center">
-              Votre enjeu : être plus rapide, plus précis, plus automatisé.
+              {t('slide2.challenge')}
             </p>
           </motion.div>
         </motion.div>

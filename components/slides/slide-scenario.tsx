@@ -3,39 +3,42 @@
 import { motion } from "framer-motion"
 import { SlideWrapper, fadeInUp, staggerContainer } from "@/components/ui/slide-wrapper"
 import { AlertCircle, MessageSquare, ArrowRight, CheckCircle2, Clock } from "lucide-react"
+import { useLocale } from "@/components/locale-provider"
 
 interface SlideProps {
   isActive: boolean
 }
 
-const scenarioSteps = [
-  {
-    icon: AlertCircle,
-    title: "Agent Sales publie une alerte",
-    description: '"Baisse des ventes d\'articles X dans plusieurs magasins."',
-    color: "text-yellow-400",
-  },
-  {
-    icon: MessageSquare,
-    title: "Agent Supply Chain commente",
-    description: '"Stock faible détecté en magasin + dépôt."',
-    color: "text-blue-400",
-  },
-  {
-    icon: ArrowRight,
-    title: "Le responsable crée une action",
-    description: '"Transférer les produits disponibles entre magasins."',
-    color: "text-purple-400",
-  },
-  {
-    icon: CheckCircle2,
-    title: "L'employé exécute et valide",
-    description: "Action complétée avec succès.",
-    color: "text-green-400",
-  },
-]
-
 export function SlideScenario({ isActive }: SlideProps) {
+  const { t } = useLocale()
+  
+  const scenarioSteps = [
+    {
+      icon: AlertCircle,
+      title: t('slide8.steps.step1.title'),
+      description: t('slide8.steps.step1.description'),
+      color: "text-yellow-400",
+    },
+    {
+      icon: MessageSquare,
+      title: t('slide8.steps.step2.title'),
+      description: t('slide8.steps.step2.description'),
+      color: "text-blue-400",
+    },
+    {
+      icon: ArrowRight,
+      title: t('slide8.steps.step3.title'),
+      description: t('slide8.steps.step3.description'),
+      color: "text-purple-400",
+    },
+    {
+      icon: CheckCircle2,
+      title: t('slide8.steps.step4.title'),
+      description: t('slide8.steps.step4.description'),
+      color: "text-green-400",
+    },
+  ]
+
   return (
     <SlideWrapper gradient="dark">
       <div className="h-full flex flex-col px-6 md:px-12 lg:px-24 pt-20 pb-6 md:py-0 md:justify-center">
@@ -48,15 +51,15 @@ export function SlideScenario({ isActive }: SlideProps) {
           {/* Header - Fixed top on mobile */}
           <div className="flex-shrink-0">
             <motion.div variants={fadeInUp} className="mb-2 md:mb-4">
-              <span className="text-xs font-mono text-primary/60 uppercase tracking-wider">08 / Scénario Client</span>
+              <span className="text-xs font-mono text-primary/60 uppercase tracking-wider">{t('slide8.section')}</span>
             </motion.div>
 
             <motion.h2 variants={fadeInUp} className="text-2xl md:text-4xl font-bold mb-1 md:mb-2 tracking-tight">
-              Scénario Client (Retail)
+              {t('slide8.title')}
             </motion.h2>
 
             <motion.p variants={fadeInUp} className="text-sm md:text-base text-muted-foreground mb-4 md:mb-8">
-              Situation → Interaction → Action → Résultat
+              {t('slide8.subtitle')}
             </motion.p>
           </div>
 
@@ -90,7 +93,7 @@ export function SlideScenario({ isActive }: SlideProps) {
           >
             <Clock className="w-6 h-6 md:w-8 md:h-8 text-green-400 flex-shrink-0" />
             <p className="text-sm md:text-lg font-semibold">
-              Action en moins de <span className="text-green-400">5 minutes</span> grâce à l'IA collaborative.
+              {t('slide8.result').replace('{minutes}', '5')}
             </p>
           </motion.div>
         </motion.div>

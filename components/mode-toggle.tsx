@@ -15,7 +15,7 @@ export function ModeToggle() {
 
   if (!mounted) {
     return (
-      <button className="p-2 rounded-full bg-card/50 backdrop-blur-sm border border-border">
+      <button className="relative z-50 p-2 rounded-full bg-card/50 backdrop-blur-sm border border-border">
         <Sun className="w-5 h-5" />
       </button>
     )
@@ -24,7 +24,7 @@ export function ModeToggle() {
   return (
     <button
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="p-2 rounded-full bg-card/50 backdrop-blur-sm border border-border hover:bg-primary/20 transition-colors"
+      className="relative z-50 p-2 rounded-full bg-card/50 backdrop-blur-sm border border-border hover:bg-primary/20 transition-colors"
       aria-label="Toggle theme"
     >
       {theme === "dark" ? (

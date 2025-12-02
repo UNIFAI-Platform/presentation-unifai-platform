@@ -3,43 +3,62 @@
 import { motion } from "framer-motion"
 import { SlideWrapper, fadeInUp, staggerContainer } from "@/components/ui/slide-wrapper"
 import { TrendingUp, Truck, Megaphone, Newspaper } from "lucide-react"
+import { useLocale } from "@/components/locale-provider"
 
 interface SlideProps {
   isActive: boolean
 }
 
-const agents = [
-  {
-    name: "Agent Sales",
-    icon: TrendingUp,
-    color: "from-blue-500/20 to-blue-600/20",
-    borderColor: "border-blue-500/30",
-    features: ["Analyse des ventes", "Alertes baisse performance", "Recommandations actions"],
-  },
-  {
-    name: "Agent Supply Chain",
-    icon: Truck,
-    color: "from-green-500/20 to-green-600/20",
-    borderColor: "border-green-500/30",
-    features: ["Analyse stock / rupture", "Recommandations réassort & transfert", "Prévisions"],
-  },
-  {
-    name: "Agent Marketing",
-    icon: Megaphone,
-    color: "from-purple-500/20 to-purple-600/20",
-    borderColor: "border-purple-500/30",
-    features: ["Analyse fidélité", "Ciblage intelligent", "Recommandations de campagnes"],
-  },
-  {
-    name: "Agent News",
-    icon: Newspaper,
-    color: "from-orange-500/20 to-orange-600/20",
-    borderColor: "border-orange-500/30",
-    features: ["Actualités pertinentes", "Veille sectorielle", "Synthèse de marché"],
-  },
-]
-
 export function SlideAgents({ isActive }: SlideProps) {
+  const { t } = useLocale()
+
+  const agents = [
+    {
+      name: t("slide6.agents.sales.name"),
+      icon: TrendingUp,
+      color: "from-blue-500/20 to-blue-600/20",
+      borderColor: "border-blue-500/30",
+      features: [
+        t("slide6.agents.sales.feature1"),
+        t("slide6.agents.sales.feature2"),
+        t("slide6.agents.sales.feature3"),
+      ],
+    },
+    {
+      name: t("slide6.agents.supply.name"),
+      icon: Truck,
+      color: "from-green-500/20 to-green-600/20",
+      borderColor: "border-green-500/30",
+      features: [
+        t("slide6.agents.supply.feature1"),
+        t("slide6.agents.supply.feature2"),
+        t("slide6.agents.supply.feature3"),
+      ],
+    },
+    {
+      name: t("slide6.agents.marketing.name"),
+      icon: Megaphone,
+      color: "from-purple-500/20 to-purple-600/20",
+      borderColor: "border-purple-500/30",
+      features: [
+        t("slide6.agents.marketing.feature1"),
+        t("slide6.agents.marketing.feature2"),
+        t("slide6.agents.marketing.feature3"),
+      ],
+    },
+    {
+      name: t("slide6.agents.news.name"),
+      icon: Newspaper,
+      color: "from-orange-500/20 to-orange-600/20",
+      borderColor: "border-orange-500/30",
+      features: [
+        t("slide6.agents.news.feature1"),
+        t("slide6.agents.news.feature2"),
+        t("slide6.agents.news.feature3"),
+      ],
+    },
+  ]
+
   return (
     <SlideWrapper gradient="teal">
       <div className="h-full flex flex-col px-6 md:px-12 lg:px-24 pt-20 pb-6 md:py-0 md:justify-center">
@@ -52,15 +71,15 @@ export function SlideAgents({ isActive }: SlideProps) {
           {/* Header - Fixed top on mobile */}
           <div className="flex-shrink-0">
             <motion.div variants={fadeInUp} className="mb-2 md:mb-4">
-              <span className="text-xs font-mono text-primary/60 uppercase tracking-wider">06 / Les Agents IA</span>
+              <span className="text-xs font-mono text-primary/60 uppercase tracking-wider">{t("slide6.section")}</span>
             </motion.div>
 
             <motion.h2 variants={fadeInUp} className="text-2xl md:text-4xl font-bold mb-1 md:mb-2 tracking-tight">
-              Les Agents IA UnifAI
+              {t("slide6.title")}
             </motion.h2>
 
             <motion.p variants={fadeInUp} className="text-sm md:text-base text-muted-foreground mb-4 md:mb-8">
-              Chaque agent vous apporte une expertise dédiée
+              {t("slide6.subtitle")}
             </motion.p>
           </div>
 
@@ -100,8 +119,7 @@ export function SlideAgents({ isActive }: SlideProps) {
             className="flex-shrink-0 mt-4 md:mt-6 text-center p-3 md:p-4 rounded-xl bg-card/30 border border-border/30"
           >
             <p className="text-sm md:text-lg font-medium">
-              Vos équipes collaborent avec des assistants experts, disponibles{" "}
-              <span className="text-primary">24/7</span>.
+              {t("slide6.footer")}
             </p>
           </motion.div>
         </motion.div>

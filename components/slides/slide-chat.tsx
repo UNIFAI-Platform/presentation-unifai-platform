@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { SlideWrapper, fadeInUp, staggerContainer } from "@/components/ui/slide-wrapper"
 import { GradientText } from "@/components/gradient-text"
 import { Send, Bot, User, Sparkles, Loader2 } from "lucide-react"
+import { useLocale } from "@/components/locale-provider"
 
 interface SlideProps {
   isActive: boolean
@@ -197,6 +198,7 @@ function MarkdownContent({ content }: { content: string }) {
 }
 
 export function SlideChat({ isActive }: SlideProps) {
+  const { t } = useLocale()
   const [messages, setMessages] = useState<Message[]>([])
   const [input, setInput] = useState("")
   const [isLoading, setIsLoading] = useState(false)
@@ -394,20 +396,21 @@ export function SlideChat({ isActive }: SlideProps) {
 
       // Final update if no content was received
       if (!accumulatedContent) {
-        updateMessageContent("Désolé, je n'ai pas pu traiter votre demande.")
+        updateMessageContent(t("slide15.noResponse"))
       }
     } catch (error) {
       console.error("Chat error:", error)
+      const errorMessage = t("slide15.error")
       setMessages((prev) => {
         const hasPlaceholder = prev.some(msg => msg.id === assistantMessageId)
         if (hasPlaceholder) {
           return prev.map((msg) =>
             msg.id === assistantMessageId
-              ? { ...msg, content: "Une erreur s'est produite. Veuillez réessayer." }
+              ? { ...msg, content: errorMessage }
               : msg
           )
         }
-        return [...prev, { id: assistantMessageId, role: "assistant", content: "Une erreur s'est produite. Veuillez réessayer." }]
+        return [...prev, { id: assistantMessageId, role: "assistant", content: errorMessage }]
       })
     } finally {
       setIsLoading(false)
@@ -440,13 +443,13 @@ export function SlideChat({ isActive }: SlideProps) {
           {/* Header */}
           <motion.div variants={fadeInUp} className="text-center mb-4 md:mb-6 shrink-0">
             <span className="text-xs font-mono text-primary/60 uppercase tracking-wider">
-              Assistant IA
+              {t("slide15.section")}
             </span>
             <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mt-2 tracking-tight">
-              <GradientText>Discutez avec UnifAI</GradientText>
+              <GradientText>{t("slide15.title")}</GradientText>
             </h2>
             <p className="text-sm md:text-base text-muted-foreground mt-2">
-              Posez vos questions sur notre plateforme
+              {t("slide15.subtitle")}
             </p>
           </motion.div>
 
@@ -471,7 +474,7 @@ export function SlideChat({ isActive }: SlideProps) {
                     <Sparkles className="w-8 h-8 md:w-10 md:h-10 text-primary" />
                   </div>
                   <p className="text-muted-foreground text-sm md:text-base max-w-xs">
-                    Commencez la conversation en posant une question sur UnifAI Platform
+                    {t("slide15.emptyState")}
                   </p>
                 </motion.div>
               )}
@@ -515,7 +518,7 @@ export function SlideChat({ isActive }: SlideProps) {
                           ) : (
                             <div className="flex items-center gap-2">
                               <Loader2 className="w-4 h-4 animate-spin text-accent" />
-                              <span className="text-muted-foreground">En train de réfléchir...</span>
+                              <span className="text-muted-foreground">{t("slide15.thinking")}</span>
                             </div>
                           )
                         ) : (
@@ -539,7 +542,7 @@ export function SlideChat({ isActive }: SlideProps) {
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={handleKeyDown}
-                  placeholder="Tapez votre message..."
+                  placeholder={t("slide15.placeholder")}
                   disabled={isLoading}
                   className="flex-1 h-10 md:h-12 px-4 md:px-5 rounded-full bg-card/50 border border-border/50 text-sm md:text-base placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/20 transition-all disabled:opacity-50"
                 />
@@ -557,7 +560,7 @@ export function SlideChat({ isActive }: SlideProps) {
           </motion.div>
 
           <motion.div variants={fadeInUp} className="mt-4 text-center shrink-0">
-            <span className="text-xs font-mono text-primary/40 uppercase tracking-wider">15 / 15</span>
+            <span className="text-xs font-mono text-primary/40 uppercase tracking-wider">{t("slide15.counter")}</span>
           </motion.div>
         </motion.div>
       </div>

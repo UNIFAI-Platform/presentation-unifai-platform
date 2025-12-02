@@ -3,22 +3,25 @@
 import { motion } from "framer-motion"
 import { SlideWrapper, fadeInUp, staggerContainer } from "@/components/ui/slide-wrapper"
 import { FileText, MessageSquare, BookOpen, BarChart2, MessageCircle, Play, Bell } from "lucide-react"
+import { useLocale } from "@/components/locale-provider"
 
 interface SlideProps {
   isActive: boolean
 }
 
-const collaborativeFeatures = [
-  { icon: FileText, text: "Publier des contenus internes (actualités, alertes, documents)" },
-  { icon: MessageSquare, text: "Réagir (commentaires, j'aime, partage)" },
-  { icon: BookOpen, text: "Créer des stories internes" },
-  { icon: BarChart2, text: "Répondre à des sondages" },
-  { icon: MessageCircle, text: "Communiquer via messagerie intégrée" },
-  { icon: Play, text: "Générer des actions pour les collaborateurs" },
-  { icon: Bell, text: "Recevoir des notifications intelligentes" },
-]
-
 export function SlideCollaborative({ isActive }: SlideProps) {
+  const { t } = useLocale()
+
+  const collaborativeFeatures = [
+    { icon: FileText, text: t("slide7.features.feature1") },
+    { icon: MessageSquare, text: t("slide7.features.feature2") },
+    { icon: BookOpen, text: t("slide7.features.feature3") },
+    { icon: BarChart2, text: t("slide7.features.feature4") },
+    { icon: MessageCircle, text: t("slide7.features.feature5") },
+    { icon: Play, text: t("slide7.features.feature6") },
+    { icon: Bell, text: t("slide7.features.feature7") },
+  ]
+
   return (
     <SlideWrapper gradient="blue">
       <div className="h-full flex flex-col px-6 md:px-12 lg:px-24 pt-20 pb-6 md:py-0 md:justify-center">
@@ -31,15 +34,15 @@ export function SlideCollaborative({ isActive }: SlideProps) {
           {/* Header - Fixed top on mobile */}
           <div className="flex-shrink-0">
             <motion.div variants={fadeInUp} className="mb-2 md:mb-4">
-              <span className="text-xs font-mono text-primary/60 uppercase tracking-wider">07 / Collaboration</span>
+              <span className="text-xs font-mono text-primary/60 uppercase tracking-wider">{t("slide7.section")}</span>
             </motion.div>
 
             <motion.h2 variants={fadeInUp} className="text-2xl md:text-5xl font-bold mb-2 md:mb-4 tracking-tight">
-              Une Plateforme Collaborative
+              {t("slide7.title")}
             </motion.h2>
 
             <motion.p variants={fadeInUp} className="text-sm md:text-lg text-muted-foreground mb-4 md:mb-8">
-              Votre équipe peut :
+              {t("slide7.subtitle")}
             </motion.p>
           </div>
 
@@ -66,7 +69,7 @@ export function SlideCollaborative({ isActive }: SlideProps) {
             variants={fadeInUp}
             className="flex-shrink-0 mt-4 md:mt-8 p-3 md:p-5 rounded-xl bg-gradient-to-r from-primary/20 to-accent/20 border border-primary/30 text-center"
           >
-            <p className="text-sm md:text-lg font-semibold">Une plateforme tout-en-un pour dynamiser la communication interne.</p>
+            <p className="text-sm md:text-lg font-semibold">{t("slide7.footer")}</p>
           </motion.div>
         </motion.div>
       </div>

@@ -3,21 +3,24 @@
 import { motion } from "framer-motion"
 import { SlideWrapper, fadeInUp, staggerContainer } from "@/components/ui/slide-wrapper"
 import { BarChart3, Bell, LineChart, Bot, Workflow, Users } from "lucide-react"
+import { useLocale } from "@/components/locale-provider"
 
 interface SlideProps {
   isActive: boolean
 }
 
-const platformFeatures = [
-  { icon: BarChart3, label: "Analyses automatiques", color: "text-blue-400" },
-  { icon: Bell, label: "Alertes intelligentes", color: "text-yellow-400" },
-  { icon: LineChart, label: "Prédictions", color: "text-green-400" },
-  { icon: Bot, label: "Agents IA spécialisés", color: "text-purple-400" },
-  { icon: Workflow, label: "Actions & workflows", color: "text-orange-400" },
-  { icon: Users, label: "Collaboration interne", color: "text-pink-400" },
-]
-
 export function SlidePlatform({ isActive }: SlideProps) {
+  const { t } = useLocale()
+
+  const platformFeatures = [
+    { icon: BarChart3, label: t("slide5.features.feature1"), color: "text-blue-400" },
+    { icon: Bell, label: t("slide5.features.feature2"), color: "text-yellow-400" },
+    { icon: LineChart, label: t("slide5.features.feature3"), color: "text-green-400" },
+    { icon: Bot, label: t("slide5.features.feature4"), color: "text-purple-400" },
+    { icon: Workflow, label: t("slide5.features.feature5"), color: "text-orange-400" },
+    { icon: Users, label: t("slide5.features.feature6"), color: "text-pink-400" },
+  ]
+
   return (
     <SlideWrapper gradient="blue">
       <div className="h-full flex flex-col px-6 md:px-12 lg:px-24 pt-20 pb-6 md:py-0 md:justify-center">
@@ -30,15 +33,15 @@ export function SlidePlatform({ isActive }: SlideProps) {
           {/* Header - Fixed top on mobile */}
           <div className="flex-shrink-0">
             <motion.div variants={fadeInUp} className="mb-2 md:mb-4">
-              <span className="text-xs font-mono text-primary/60 uppercase tracking-wider">05 / La Version Avancée</span>
+              <span className="text-xs font-mono text-primary/60 uppercase tracking-wider">{t("slide5.section")}</span>
             </motion.div>
 
             <motion.h2 variants={fadeInUp} className="text-2xl md:text-5xl font-bold mb-2 md:mb-4 tracking-tight">
-              UnifAI Platform
+              {t("slide5.title")}
             </motion.h2>
 
             <motion.p variants={fadeInUp} className="text-sm md:text-xl text-muted-foreground mb-4 md:mb-10">
-              Une plateforme collaborative tout-en-un pour votre performance :
+              {t("slide5.subtitle")}
             </motion.p>
           </div>
 
@@ -68,7 +71,7 @@ export function SlidePlatform({ isActive }: SlideProps) {
             className="flex-shrink-0 mt-4 md:mt-10 text-center p-3 md:p-6 rounded-xl bg-gradient-to-r from-primary/10 via-accent/10 to-primary/10 border border-border/30"
           >
             <p className="text-sm md:text-xl font-semibold">
-              Tout ce dont votre entreprise a besoin pour être <span className="text-primary">data-driven</span>.
+              {t("slide5.footer")}
             </p>
           </motion.div>
         </motion.div>

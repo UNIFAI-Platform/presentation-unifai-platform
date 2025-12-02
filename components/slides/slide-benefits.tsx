@@ -3,39 +3,54 @@
 import { motion } from "framer-motion"
 import { SlideWrapper, fadeInUp, staggerContainer } from "@/components/ui/slide-wrapper"
 import { Wrench, DollarSign, BarChart3 } from "lucide-react"
+import { useLocale } from "@/components/locale-provider"
 
 interface SlideProps {
   isActive: boolean
 }
 
-const benefitCategories = [
-  {
-    icon: Wrench,
-    title: "Opérationnels",
-    color: "from-blue-500/20 to-blue-600/20",
-    borderColor: "border-blue-500/30",
-    iconColor: "text-blue-400",
-    items: ["Réduction du temps de traitement", "Automatisation des tâches répétitives", "Collaboration améliorée"],
-  },
-  {
-    icon: DollarSign,
-    title: "Business",
-    color: "from-green-500/20 to-green-600/20",
-    borderColor: "border-green-500/30",
-    iconColor: "text-green-400",
-    items: ["Réduction des ruptures", "Augmentation de la disponibilité produit", "Meilleure performance marketing"],
-  },
-  {
-    icon: BarChart3,
-    title: "Stratégique",
-    color: "from-purple-500/20 to-purple-600/20",
-    borderColor: "border-purple-500/30",
-    iconColor: "text-purple-400",
-    items: ["Décisions plus rapides", "Vision consolidée", "Plateforme évolutive & personnalisable"],
-  },
-]
-
 export function SlideBenefits({ isActive }: SlideProps) {
+  const { t } = useLocale()
+  
+  const benefitCategories = [
+    {
+      icon: Wrench,
+      title: t('slide10.categories.operational.title'),
+      color: "from-blue-500/20 to-blue-600/20",
+      borderColor: "border-blue-500/30",
+      iconColor: "text-blue-400",
+      items: [
+        t('slide10.categories.operational.items.item1'),
+        t('slide10.categories.operational.items.item2'),
+        t('slide10.categories.operational.items.item3'),
+      ],
+    },
+    {
+      icon: DollarSign,
+      title: t('slide10.categories.business.title'),
+      color: "from-green-500/20 to-green-600/20",
+      borderColor: "border-green-500/30",
+      iconColor: "text-green-400",
+      items: [
+        t('slide10.categories.business.items.item1'),
+        t('slide10.categories.business.items.item2'),
+        t('slide10.categories.business.items.item3'),
+      ],
+    },
+    {
+      icon: BarChart3,
+      title: t('slide10.categories.strategic.title'),
+      color: "from-purple-500/20 to-purple-600/20",
+      borderColor: "border-purple-500/30",
+      iconColor: "text-purple-400",
+      items: [
+        t('slide10.categories.strategic.items.item1'),
+        t('slide10.categories.strategic.items.item2'),
+        t('slide10.categories.strategic.items.item3'),
+      ],
+    },
+  ]
+
   return (
     <SlideWrapper gradient="teal">
       <div className="h-full flex flex-col px-6 md:px-12 lg:px-24 pt-20 pb-6 md:py-0 md:justify-center">
@@ -48,11 +63,11 @@ export function SlideBenefits({ isActive }: SlideProps) {
           {/* Header - Fixed top on mobile */}
           <div className="flex-shrink-0">
             <motion.div variants={fadeInUp} className="mb-2 md:mb-4">
-              <span className="text-xs font-mono text-primary/60 uppercase tracking-wider">10 / Les Bénéfices</span>
+              <span className="text-xs font-mono text-primary/60 uppercase tracking-wider">{t('slide10.section')}</span>
             </motion.div>
 
             <motion.h2 variants={fadeInUp} className="text-2xl md:text-5xl font-bold mb-4 md:mb-10 tracking-tight">
-              Les Bénéfices Pour Vous
+              {t('slide10.title')}
             </motion.h2>
           </div>
 

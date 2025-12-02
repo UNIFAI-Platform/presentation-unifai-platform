@@ -3,20 +3,29 @@
 import { motion } from "framer-motion"
 import { SlideWrapper, fadeInUp, staggerContainer } from "@/components/ui/slide-wrapper"
 import { CheckCircle2, Target } from "lucide-react"
+import { useLocale } from "@/components/locale-provider"
 
 interface SlideProps {
   isActive: boolean
 }
 
-const missionItems = [
-  "Améliorer la qualité et la cohérence de leurs données",
-  "Centraliser l'information et les analyses",
-  "Automatiser les tâches répétitives",
-  "Détecter plus vite les anomalies & opportunités",
-  "Prendre de meilleures décisions grâce à l'IA",
-]
-
 export function SlideMission({ isActive }: SlideProps) {
+  const { t, locale } = useLocale()
+  
+  const missionItems = locale === 'fr' ? [
+    "Améliorer la qualité et la cohérence de leurs données",
+    "Centraliser l'information et les analyses",
+    "Automatiser les tâches répétitives",
+    "Détecter plus vite les anomalies & opportunités",
+    "Prendre de meilleures décisions grâce à l'IA",
+  ] : [
+    "Improve data quality and consistency",
+    "Centralize information and analyses",
+    "Automate repetitive tasks",
+    "Detect anomalies & opportunities faster",
+    "Make better decisions with AI",
+  ]
+
   return (
     <SlideWrapper gradient="blue">
       <div className="h-full flex flex-col px-6 md:px-12 lg:px-24 pt-20 pb-6 md:py-0 md:justify-center">
@@ -29,11 +38,11 @@ export function SlideMission({ isActive }: SlideProps) {
           {/* Header - Fixed top on mobile */}
           <div className="flex-shrink-0">
             <motion.div variants={fadeInUp} className="mb-2 md:mb-4">
-              <span className="text-xs font-mono text-primary/60 uppercase tracking-wider">03 / Notre Mission</span>
+              <span className="text-xs font-mono text-primary/60 uppercase tracking-wider">{t('slide3.section')}</span>
             </motion.div>
 
             <motion.h2 variants={fadeInUp} className="text-2xl md:text-5xl font-bold mb-2 md:mb-4 tracking-tight">
-              UnifAI aide les entreprises retail à :
+              {locale === 'fr' ? 'UnifAI aide les entreprises retail à :' : 'UnifAI helps retail businesses to:'}
             </motion.h2>
 
             <motion.div
@@ -66,10 +75,12 @@ export function SlideMission({ isActive }: SlideProps) {
                     <div className="w-10 h-10 md:w-14 md:h-14 rounded-xl bg-primary/30 flex items-center justify-center">
                       <Target className="w-5 h-5 md:w-7 md:h-7 text-primary" />
                     </div>
-                    <h3 className="text-lg md:text-xl font-bold">Objectif ultime</h3>
+                    <h3 className="text-lg md:text-xl font-bold">{locale === 'fr' ? 'Objectif ultime' : 'Ultimate goal'}</h3>
                   </div>
                   <p className="text-sm md:text-xl text-foreground/90 leading-relaxed">
-                    Augmenter vos ventes, réduire vos pertes et accélérer vos opérations.
+                    {locale === 'fr' 
+                      ? 'Augmenter vos ventes, réduire vos pertes et accélérer vos opérations.'
+                      : 'Increase your sales, reduce your losses and accelerate your operations.'}
                   </p>
                 </div>
               </motion.div>

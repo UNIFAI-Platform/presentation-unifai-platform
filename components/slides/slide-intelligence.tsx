@@ -3,20 +3,23 @@
 import { motion } from "framer-motion"
 import { SlideWrapper, fadeInUp, staggerContainer } from "@/components/ui/slide-wrapper"
 import { Sparkles, Eraser, Grid3X3, Tags, AlertTriangle, ArrowRight } from "lucide-react"
+import { useLocale } from "@/components/locale-provider"
 
 interface SlideProps {
   isActive: boolean
 }
 
-const features = [
-  { icon: Eraser, label: "Nettoyage automatique" },
-  { icon: Grid3X3, label: "Normalisation" },
-  { icon: Tags, label: "Catégorisation intelligente" },
-  { icon: Sparkles, label: "Enrichissement des attributs" },
-  { icon: AlertTriangle, label: "Détection d'erreurs" },
-]
-
 export function SlideIntelligence({ isActive }: SlideProps) {
+  const { t } = useLocale()
+
+  const features = [
+    { icon: Eraser, label: t("slide4.features.feature1") },
+    { icon: Grid3X3, label: t("slide4.features.feature2") },
+    { icon: Tags, label: t("slide4.features.feature3") },
+    { icon: Sparkles, label: t("slide4.features.feature4") },
+    { icon: AlertTriangle, label: t("slide4.features.feature5") },
+  ]
+
   return (
     <SlideWrapper gradient="dark">
       <div className="h-full flex flex-col px-6 md:px-12 lg:px-24 pt-20 pb-6 md:py-0 md:justify-center">
@@ -30,18 +33,18 @@ export function SlideIntelligence({ isActive }: SlideProps) {
           <div className="flex-shrink-0">
             <motion.div variants={fadeInUp} className="mb-2 md:mb-4">
               <span className="text-xs font-mono text-primary/60 uppercase tracking-wider">
-                04 / Intelligence Produit
+                {t("slide4.section")}
               </span>
             </motion.div>
 
             <motion.h2 variants={fadeInUp} className="text-2xl md:text-5xl font-bold mb-2 md:mb-4 tracking-tight">
-              UnifAI : La Base de Votre
+              {t("slide4.title1")}
               <br />
-              <span className="text-primary">Intelligence Produit</span>
+              <span className="text-primary">{t("slide4.title2")}</span>
             </motion.h2>
 
             <motion.p variants={fadeInUp} className="text-sm md:text-lg text-muted-foreground mb-4 md:mb-10 max-w-2xl">
-              UnifAI est une plateforme IA spécialisée dans la gestion des données produit
+              {t("slide4.subtitle")}
             </motion.p>
           </div>
 
@@ -70,8 +73,7 @@ export function SlideIntelligence({ isActive }: SlideProps) {
           >
             <ArrowRight className="w-5 h-5 md:w-6 md:h-6 text-accent flex-shrink-0" />
             <p className="text-sm md:text-xl font-medium">
-              <span className="text-accent">Résultat :</span> un catalogue plus propre, cohérent, prêt pour le
-              multicanal.
+              {t("slide4.result")}
             </p>
           </motion.div>
         </motion.div>

@@ -17,56 +17,59 @@ import {
   Rocket,
   CheckCircle2
 } from "lucide-react"
+import { useLocale } from "@/components/locale-provider"
 
 interface SlideProps {
   isActive: boolean
   onNavigate?: (slideNumber: number) => void
 }
 
-const clientBenefits = [
-  {
-    icon: TrendingUp,
-    title: "Augmentation des ventes",
-    description: "Identifiez les opportunités de croissance et optimisez votre performance commerciale",
-    color: "from-green-500/20 to-emerald-500/20",
-    borderColor: "border-green-500/30",
-    iconColor: "text-green-400"
-  },
-  {
-    icon: Clock,
-    title: "Gain de temps",
-    description: "Automatisez les tâches répétitives et concentrez-vous sur l'essentiel",
-    color: "from-blue-500/20 to-cyan-500/20",
-    borderColor: "border-blue-500/30",
-    iconColor: "text-blue-400"
-  },
-  {
-    icon: ShieldCheck,
-    title: "Données fiables",
-    description: "Garantissez la qualité et la cohérence de vos données produit",
-    color: "from-purple-500/20 to-violet-500/20",
-    borderColor: "border-purple-500/30",
-    iconColor: "text-purple-400"
-  },
-  {
-    icon: Zap,
-    title: "Réactivité accrue",
-    description: "Réagissez rapidement aux fluctuations du marché avec des alertes intelligentes",
-    color: "from-orange-500/20 to-amber-500/20",
-    borderColor: "border-orange-500/30",
-    iconColor: "text-orange-400"
-  },
-]
-
-const deliverables = [
-  "Agents IA personnalisés selon vos besoins métier",
-  "Intégration avec vos systèmes existants",
-  "Tableaux de bord sur mesure",
-  "Formation et accompagnement de vos équipes",
-  "Support dédié et évolutions continues",
-]
-
 export function SlideClient({ isActive, onNavigate }: SlideProps) {
+  const { t } = useLocale()
+  
+  const clientBenefits = [
+    {
+      icon: TrendingUp,
+      title: t('slide13.benefits.sales.title'),
+      description: t('slide13.benefits.sales.description'),
+      color: "from-green-500/20 to-emerald-500/20",
+      borderColor: "border-green-500/30",
+      iconColor: "text-green-400"
+    },
+    {
+      icon: Clock,
+      title: t('slide13.benefits.time.title'),
+      description: t('slide13.benefits.time.description'),
+      color: "from-blue-500/20 to-cyan-500/20",
+      borderColor: "border-blue-500/30",
+      iconColor: "text-blue-400"
+    },
+    {
+      icon: ShieldCheck,
+      title: t('slide13.benefits.data.title'),
+      description: t('slide13.benefits.data.description'),
+      color: "from-purple-500/20 to-violet-500/20",
+      borderColor: "border-purple-500/30",
+      iconColor: "text-purple-400"
+    },
+    {
+      icon: Zap,
+      title: t('slide13.benefits.reactive.title'),
+      description: t('slide13.benefits.reactive.description'),
+      color: "from-orange-500/20 to-amber-500/20",
+      borderColor: "border-orange-500/30",
+      iconColor: "text-orange-400"
+    },
+  ]
+
+  const deliverables = [
+    t('slide13.commitment.items.item1'),
+    t('slide13.commitment.items.item2'),
+    t('slide13.commitment.items.item3'),
+    t('slide13.commitment.items.item4'),
+    t('slide13.commitment.items.item5'),
+  ]
+
   return (
     <SlideWrapper gradient="dark">
       <div className="h-full flex flex-col px-6 md:px-12 lg:px-24 pt-16 pb-6 md:py-0 md:justify-center">
@@ -82,10 +85,10 @@ export function SlideClient({ isActive, onNavigate }: SlideProps) {
               <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                 <div>
                   <span className="text-xs font-mono text-primary/60 uppercase tracking-wider">
-                    Proposition Personnalisée
+                    {t('slide13.section')}
                   </span>
                   <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mt-2 tracking-tight">
-                    Notre collaboration avec
+                    {t('slide13.title')}
                   </h2>
                 </div>
                 
@@ -120,7 +123,7 @@ export function SlideClient({ isActive, onNavigate }: SlideProps) {
                   className="text-lg md:text-xl font-semibold flex items-center gap-2 mb-2"
                 >
                   <Sparkles className="w-5 h-5 text-accent" />
-                  Ce que UnifAI vous apporte
+                  {t('slide13.benefits.title')}
                 </motion.h3>
                 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-3">
@@ -156,7 +159,7 @@ export function SlideClient({ isActive, onNavigate }: SlideProps) {
                   className="text-lg md:text-xl font-semibold flex items-center gap-2 mb-2"
                 >
                   <Rocket className="w-5 h-5 text-primary" />
-                  Notre engagement
+                  {t('slide13.commitment.title')}
                 </motion.h3>
 
                 <motion.div
@@ -185,9 +188,9 @@ export function SlideClient({ isActive, onNavigate }: SlideProps) {
                   className="grid grid-cols-3 gap-2 md:gap-3"
                 >
                   {[
-                    { icon: BarChart3, value: "+30%", label: "Efficacité", color: "text-green-400" },
-                    { icon: Clock, value: "-50%", label: "Temps", color: "text-blue-400" },
-                    { icon: Target, value: "100%", label: "Données", color: "text-purple-400" },
+                    { icon: BarChart3, value: "+30%", label: t('slide13.stats.efficiency'), color: "text-green-400" },
+                    { icon: Clock, value: "-50%", label: t('slide13.stats.time'), color: "text-blue-400" },
+                    { icon: Target, value: "100%", label: t('slide13.stats.data'), color: "text-purple-400" },
                   ].map((stat, index) => (
                     <motion.div
                       key={index}
@@ -230,10 +233,10 @@ export function SlideClient({ isActive, onNavigate }: SlideProps) {
                   </div>
                   <div>
                     <p className="text-sm md:text-lg font-semibold">
-                      Prêts à transformer votre entreprise ?
+                      {t('slide13.cta.title')}
                     </p>
                     <p className="text-xs md:text-sm text-muted-foreground">
-                      Commençons cette aventure ensemble
+                      {t('slide13.cta.subtitle')}
                     </p>
                   </div>
                 </div>
@@ -244,7 +247,7 @@ export function SlideClient({ isActive, onNavigate }: SlideProps) {
                   onClick={() => onNavigate?.(14)}
                   className="flex items-center gap-2 px-4 py-2 md:px-6 md:py-3 rounded-full bg-primary text-primary-foreground font-medium cursor-pointer"
                 >
-                  <span className="text-sm md:text-base">Démarrer</span>
+                  <span className="text-sm md:text-base">{t('slide13.cta.button')}</span>
                   <ChevronRight className="w-4 h-4 md:w-5 md:h-5" />
                 </motion.div>
               </div>

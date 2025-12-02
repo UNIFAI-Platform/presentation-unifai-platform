@@ -3,20 +3,23 @@
 import { motion } from "framer-motion"
 import { SlideWrapper, fadeInUp, staggerContainer } from "@/components/ui/slide-wrapper"
 import { Bell, BarChart3, BookOpen, LineChart, Send, Zap } from "lucide-react"
+import { useLocale } from "@/components/locale-provider"
 
 interface SlideProps {
   isActive: boolean
 }
 
-const automationFeatures = [
-  { icon: Bell, text: "Alertes (rupture, ventes, anomalies)" },
-  { icon: BarChart3, text: "Analyses" },
-  { icon: BookOpen, text: "Stories & commentaires IA" },
-  { icon: LineChart, text: "Prédictions (vente, stock, fidélité)" },
-  { icon: Send, text: "Envois WhatsApp / Email / Telegram" },
-]
-
 export function SlideAutomation({ isActive }: SlideProps) {
+  const { t } = useLocale()
+
+  const automationFeatures = [
+    { icon: Bell, text: t("slide9.features.feature1") },
+    { icon: BarChart3, text: t("slide9.features.feature2") },
+    { icon: BookOpen, text: t("slide9.features.feature3") },
+    { icon: LineChart, text: t("slide9.features.feature4") },
+    { icon: Send, text: t("slide9.features.feature5") },
+  ]
+
   return (
     <SlideWrapper gradient="blue">
       <div className="h-full flex flex-col px-6 md:px-12 lg:px-24 pt-20 pb-6 md:py-0 md:justify-center">
@@ -29,15 +32,15 @@ export function SlideAutomation({ isActive }: SlideProps) {
           {/* Header - Fixed top on mobile */}
           <div className="flex-shrink-0">
             <motion.div variants={fadeInUp} className="mb-2 md:mb-4">
-              <span className="text-xs font-mono text-primary/60 uppercase tracking-wider">09 / Automatisation</span>
+              <span className="text-xs font-mono text-primary/60 uppercase tracking-wider">{t("slide9.section")}</span>
             </motion.div>
 
             <motion.h2 variants={fadeInUp} className="text-2xl md:text-5xl font-bold mb-2 md:mb-4 tracking-tight">
-              Automatisation & Intelligence
+              {t("slide9.title")}
             </motion.h2>
 
             <motion.p variants={fadeInUp} className="text-sm md:text-lg text-muted-foreground mb-4 md:mb-8">
-              Création automatique de :
+              {t("slide9.subtitle")}
             </motion.p>
           </div>
 
@@ -69,15 +72,14 @@ export function SlideAutomation({ isActive }: SlideProps) {
                   <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-accent/20 flex items-center justify-center">
                     <Zap className="w-5 h-5 md:w-6 md:h-6 text-accent" />
                   </div>
-                  <h3 className="text-lg md:text-xl font-bold">Workflows intelligents</h3>
+                  <h3 className="text-lg md:text-xl font-bold">{t("slide9.workflows.title")}</h3>
                 </div>
                 <p className="text-sm md:text-base text-muted-foreground mb-3 md:mb-4">
-                  Workflows gérés via n8n + modèles IA entraînés sur vos données.
+                  {t("slide9.workflows.description")}
                 </p>
                 <div className="p-3 md:p-4 rounded-lg bg-primary/10 border border-primary/20">
                   <p className="text-sm md:text-base font-semibold text-center">
-                    Vous gagnez en <span className="text-primary">rapidité</span>,{" "}
-                    <span className="text-accent">précision</span> et <span className="text-green-400">efficacité</span>.
+                    {t("slide9.workflows.benefit")}
                   </p>
                 </div>
               </motion.div>

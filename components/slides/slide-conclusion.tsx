@@ -3,21 +3,24 @@
 import { motion } from "framer-motion"
 import { SlideWrapper, fadeInUp, staggerContainer } from "@/components/ui/slide-wrapper"
 import { Database, Cog, Eye, Users, TrendingDown, TrendingUp, Sparkles } from "lucide-react"
+import { useLocale } from "@/components/locale-provider"
 
 interface SlideProps {
   isActive: boolean
 }
 
-const conclusionItems = [
-  { icon: Database, text: "Centraliser votre information" },
-  { icon: Cog, text: "Automatiser vos processus critiques" },
-  { icon: Eye, text: "Anticiper plutôt que réagir" },
-  { icon: Users, text: "Mieux collaborer" },
-  { icon: TrendingDown, text: "Réduire vos pertes" },
-  { icon: TrendingUp, text: "Augmenter vos ventes" },
-]
-
 export function SlideConclusion({ isActive }: SlideProps) {
+  const { t } = useLocale()
+
+  const conclusionItems = [
+    { icon: Database, text: t("slide12.items.item1") },
+    { icon: Cog, text: t("slide12.items.item2") },
+    { icon: Eye, text: t("slide12.items.item3") },
+    { icon: Users, text: t("slide12.items.item4") },
+    { icon: TrendingDown, text: t("slide12.items.item5") },
+    { icon: TrendingUp, text: t("slide12.items.item6") },
+  ]
+
   return (
     <SlideWrapper gradient="dark">
       <div className="h-full flex flex-col px-6 md:px-12 lg:px-24 pt-20 pb-6 md:py-0 md:justify-center">
@@ -30,11 +33,11 @@ export function SlideConclusion({ isActive }: SlideProps) {
           {/* Header - Fixed top on mobile */}
           <div className="flex-shrink-0">
             <motion.div variants={fadeInUp} className="mb-2 md:mb-4">
-              <span className="text-xs font-mono text-primary/60 uppercase tracking-wider">12 / Conclusion</span>
+              <span className="text-xs font-mono text-primary/60 uppercase tracking-wider">{t("slide12.section")}</span>
             </motion.div>
 
             <motion.h2 variants={fadeInUp} className="text-2xl md:text-5xl font-bold mb-2 md:mb-4 tracking-tight">
-              UnifAI Platform vous permet de :
+              {t("slide12.title")}
             </motion.h2>
 
             <motion.div
@@ -68,7 +71,7 @@ export function SlideConclusion({ isActive }: SlideProps) {
           >
             <div className="flex items-center justify-center gap-2 md:gap-3 mb-2">
               <Sparkles className="w-5 h-5 md:w-6 md:h-6 text-accent" />
-              <p className="text-sm md:text-2xl font-bold">Prêts à transformer vos opérations avec l'IA ?</p>
+              <p className="text-sm md:text-2xl font-bold">{t("slide12.footer")}</p>
               <Sparkles className="w-5 h-5 md:w-6 md:h-6 text-accent" />
             </div>
           </motion.div>

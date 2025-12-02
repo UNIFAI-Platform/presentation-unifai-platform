@@ -1,0 +1,286 @@
+{
+  "common": {
+    "discover": "Découvrir",
+    "learnMore": "En savoir plus",
+    "contact": "Contact",
+    "startNow": "Démarrer"
+  },
+  "slide1": {
+    "tagline": "Intelligence Artificielle pour le Retail",
+    "title1": "Accélérez votre",
+    "title2": "performance",
+    "title3": "grâce à l'IA collaborative",
+    "subtitle": "Une plateforme intelligente qui connecte vos équipes, vos données et vos décisions.",
+    "swipeHint": "Glissez pour découvrir",
+    "presentedBy": "Présenté par:",
+    "team": "L'équipe UnifAI",
+    "seenAt": "Présent aux salons",
+    "fairs": {
+      "2023": "Vivatech • Tech for Retail",
+      "2024": "Tech for Retail",
+      "2025": "Vivatech • Tech for Retail • Sirha Lyon"
+    }
+  },
+  "slide2": {
+    "section": "02 / Le Contexte",
+    "title": "Le retail évolue rapidement",
+    "items": {
+      "item1": "Explosion du nombre de produits et sources de données",
+      "item2": "Difficulté à garantir une donnée fiable et cohérente",
+      "item3": "Besoin d'une réponse rapide aux fluctuations (stocks, ventes, réassorts)",
+      "item4": "Multiplication des outils → perte de temps, décalage d'information",
+      "item5": "Importance de la réactivité opérationnelle"
+    },
+    "challenge": "Votre enjeu : être plus rapide, plus précis, plus automatisé."
+  },
+  "slide3": {
+    "section": "03 / Notre Mission",
+    "title": "Notre mission",
+    "subtitle": "Créer une IA qui travaille avec vous, pas à votre place.",
+    "principles": {
+      "principle1": {
+        "title": "Collaborative",
+        "description": "Agents IA spécialisés + humains dans la boucle"
+      },
+      "principle2": {
+        "title": "Contextualisée",
+        "description": "Entraînée sur vos données produit, ventes, stock"
+      },
+      "principle3": {
+        "title": "Actionnable",
+        "description": "Recommandations + exécution, pas juste des dashboards"
+      }
+    }
+  },
+  "slide4": {
+    "section": "04 / Intelligence Produit",
+    "title1": "UnifAI : La Base de Votre",
+    "title2": "Intelligence Produit",
+    "subtitle": "UnifAI est une plateforme IA spécialisée dans la gestion des données produit",
+    "features": {
+      "feature1": "Nettoyage automatique",
+      "feature2": "Normalisation",
+      "feature3": "Catégorisation intelligente",
+      "feature4": "Enrichissement des attributs",
+      "feature5": "Détection d'erreurs"
+    },
+    "result": "Résultat : un catalogue plus propre, cohérent, prêt pour le multicanal."
+  },
+  "slide5": {
+    "section": "05 / La Version Avancée",
+    "title": "UnifAI Platform",
+    "subtitle": "Une plateforme collaborative tout-en-un pour votre performance :",
+    "features": {
+      "feature1": "Analyses automatiques",
+      "feature2": "Alertes intelligentes",
+      "feature3": "Prédictions",
+      "feature4": "Agents IA spécialisés",
+      "feature5": "Actions & workflows",
+      "feature6": "Collaboration interne"
+    },
+    "footer": "Tout ce dont votre entreprise a besoin pour être data-driven."
+  },
+  "slide6": {
+    "section": "06 / Les Agents IA",
+    "title": "Les Agents IA UnifAI",
+    "subtitle": "Chaque agent vous apporte une expertise dédiée",
+    "agents": {
+      "sales": {
+        "name": "Agent Sales",
+        "feature1": "Analyse des ventes",
+        "feature2": "Alertes baisse performance",
+        "feature3": "Recommandations actions"
+      },
+      "supply": {
+        "name": "Agent Supply Chain",
+        "feature1": "Analyse stock / rupture",
+        "feature2": "Recommandations réassort & transfert",
+        "feature3": "Prévisions"
+      },
+      "marketing": {
+        "name": "Agent Marketing",
+        "feature1": "Analyse fidélité",
+        "feature2": "Ciblage intelligent",
+        "feature3": "Recommandations de campagnes"
+      },
+      "news": {
+        "name": "Agent News",
+        "feature1": "Actualités pertinentes",
+        "feature2": "Veille sectorielle",
+        "feature3": "Synthèse de marché"
+      }
+    },
+    "footer": "Vos équipes collaborent avec des assistants experts, disponibles 24/7."
+  },
+  "slide7": {
+    "section": "07 / Collaboration",
+    "title": "Une Plateforme Collaborative",
+    "subtitle": "Votre équipe peut :",
+    "features": {
+      "feature1": "Publier des contenus internes (actualités, alertes, documents)",
+      "feature2": "Réagir (commentaires, j'aime, partage)",
+      "feature3": "Créer des stories internes",
+      "feature4": "Répondre à des sondages",
+      "feature5": "Communiquer via messagerie intégrée",
+      "feature6": "Générer des actions pour les collaborateurs",
+      "feature7": "Recevoir des notifications intelligentes"
+    },
+    "footer": "Une plateforme tout-en-un pour dynamiser la communication interne."
+  },
+  "slide8": {
+    "section": "08 / Scénario Client",
+    "title": "Scénario Client (Retail)",
+    "subtitle": "Situation → Interaction → Action → Résultat",
+    "steps": {
+      "step1": {
+        "title": "Agent Sales publie une alerte",
+        "description": "\"Baisse des ventes d'articles X dans plusieurs magasins.\""
+      },
+      "step2": {
+        "title": "Agent Supply Chain commente",
+        "description": "\"Stock faible détecté en magasin + dépôt.\""
+      },
+      "step3": {
+        "title": "L'agent crée une action",
+        "description": "\"Transférer les produits disponibles entre magasins.\""
+      },
+      "step4": {
+        "title": "L'employé exécute et valide",
+        "description": "Action complétée avec succès."
+      }
+    },
+    "result": "Action en moins de {minutes} grâce à l'IA collaborative."
+  },
+  "slide9": {
+    "section": "09 / Automatisation",
+    "title": "Automatisation & Intelligence",
+    "subtitle": "Création automatique de :",
+    "features": {
+      "feature1": "Alertes (rupture, ventes, anomalies)",
+      "feature2": "Analyses",
+      "feature3": "Stories & commentaires IA",
+      "feature4": "Prédictions (vente, stock, fidélité)",
+      "feature5": "Envois WhatsApp / Email / Telegram"
+    },
+    "workflows": {
+      "title": "Workflows intelligents",
+      "description": "Workflows gérés via n8n + modèles IA entraînés sur vos données.",
+      "benefit": "Vous gagnez en rapidité, précision et efficacité."
+    }
+  },
+  "slide10": {
+    "section": "10 / Les Bénéfices",
+    "title": "Les Bénéfices Pour Vous",
+    "categories": {
+      "operational": {
+        "title": "Opérationnels",
+        "items": {
+          "item1": "Réduction du temps de traitement",
+          "item2": "Automatisation des tâches répétitives",
+          "item3": "Collaboration améliorée"
+        }
+      },
+      "business": {
+        "title": "Business",
+        "items": {
+          "item1": "Réduction des ruptures",
+          "item2": "Augmentation de la disponibilité produit",
+          "item3": "Meilleure performance marketing"
+        }
+      },
+      "strategic": {
+        "title": "Stratégique",
+        "items": {
+          "item1": "Décisions plus rapides",
+          "item2": "Vision consolidée",
+          "item3": "Plateforme évolutive & personnalisable"
+        }
+      }
+    }
+  },
+  "slide11": {
+    "section": "11 / Pourquoi Nous",
+    "title": "Pourquoi UnifAI ?",
+    "reasons": {
+      "reason1": "Technologie IA avancée",
+      "reason2": "Déjà utilisée par des entreprises retail",
+      "reason3": "Très simple à intégrer",
+      "reason4": "Rapidité de déploiement",
+      "reason5": "Plateforme évolutive (multi-agents)",
+      "reason6": "Support continu"
+    },
+    "footer": "UnifAI n'est pas seulement un outil : c'est un accélérateur de performance."
+  },
+  "slide12": {
+    "section": "12 / Conclusion",
+    "title": "UnifAI Platform vous permet de :",
+    "items": {
+      "item1": "Centraliser votre information",
+      "item2": "Automatiser vos processus critiques",
+      "item3": "Anticiper plutôt que réagir",
+      "item4": "Mieux collaborer",
+      "item5": "Réduire vos pertes",
+      "item6": "Augmenter vos ventes"
+    },
+    "footer": "Prêts à transformer vos opérations avec l'IA ?"
+  },
+  "slide13": {
+    "section": "13 / Proposition Personnalisée",
+    "title": "Notre collaboration avec",
+    "benefits": {
+      "title": "Ce que UnifAI vous apporte",
+      "sales": {
+        "title": "Augmentation des ventes",
+        "description": "Identifiez les opportunités de croissance et optimisez votre performance commerciale"
+      },
+      "time": {
+        "title": "Gain de temps",
+        "description": "Automatisez les tâches répétitives et concentrez-vous sur l'essentiel"
+      },
+      "data": {
+        "title": "Données fiables",
+        "description": "Garantissez la qualité et la cohérence de vos données produit"
+      },
+      "reactive": {
+        "title": "Réactivité accrue",
+        "description": "Réagissez rapidement aux fluctuations du marché avec des alertes intelligentes"
+      }
+    },
+    "commitment": {
+      "title": "Notre engagement",
+      "items": {
+        "item1": "Agents IA personnalisés selon vos besoins métier",
+        "item2": "Intégration avec vos systèmes existants",
+        "item3": "Tableaux de bord sur mesure",
+        "item4": "Formation et accompagnement de vos équipes",
+        "item5": "Support dédié et évolutions continues"
+      }
+    },
+    "stats": {
+      "efficiency": "Efficacité",
+      "time": "Temps",
+      "data": "Données"
+    },
+    "cta": {
+      "title": "Prêts à transformer votre entreprise ?",
+      "subtitle": "Commençons cette aventure ensemble",
+      "button": "Démarrer"
+    }
+  },
+  "slide14": {
+    "title": "Merci",
+    "subtitle": "Questions ?",
+    "counter": "14 / 14"
+  },
+  "slide15": {
+    "section": "Assistant IA",
+    "title": "Discutez avec UnifAI",
+    "subtitle": "Posez vos questions sur notre plateforme",
+    "placeholder": "Tapez votre message...",
+    "emptyState": "Commencez la conversation en posant une question sur UnifAI Platform",
+    "thinking": "En train de réfléchir...",
+    "error": "Une erreur s'est produite. Veuillez réessayer.",
+    "noResponse": "Désolé, je n'ai pas pu traiter votre demande.",
+    "counter": "15 / 15"
+  }
+}

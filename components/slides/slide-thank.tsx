@@ -5,12 +5,15 @@ import { SlideWrapper, fadeInUp, staggerContainer } from "@/components/ui/slide-
 import { Mail, Globe } from "lucide-react"
 import { ThemeLogo } from "@/components/theme-logo"
 import { GradientText } from "@/components/gradient-text"
+import { useLocale } from "@/components/locale-provider"
 
 interface SlideProps {
   isActive: boolean
 }
 
 export function SlideThank({ isActive }: SlideProps) {
+  const { t } = useLocale()
+  
   return (
     <SlideWrapper gradient="blue">
       <div className="h-full flex flex-col items-center justify-center px-6 md:px-12">
@@ -28,12 +31,12 @@ export function SlideThank({ isActive }: SlideProps) {
           {/* Thank you */}
           <motion.h2 variants={fadeInUp} className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight">
             <GradientText>
-              Merci
+              {t('slide14.title')}
             </GradientText>
           </motion.h2>
 
           <motion.p variants={fadeInUp} className="text-xl md:text-2xl text-muted-foreground mb-12">
-            Questions ?
+            {t('slide14.subtitle')}
           </motion.p>
 
           {/* Contact info */}
@@ -59,7 +62,7 @@ export function SlideThank({ isActive }: SlideProps) {
 
           {/* Slide number */}
           <motion.div variants={fadeInUp} className="mt-16">
-            <span className="text-xs font-mono text-primary/40 uppercase tracking-wider">13 / 13</span>
+            <span className="text-xs font-mono text-primary/40 uppercase tracking-wider">{t('slide14.counter')}</span>
           </motion.div>
         </motion.div>
       </div>

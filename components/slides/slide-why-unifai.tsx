@@ -3,21 +3,24 @@
 import { motion } from "framer-motion"
 import { SlideWrapper, fadeInUp, staggerContainer } from "@/components/ui/slide-wrapper"
 import { Cpu, Building2, Plug, Rocket, Layers, HeadphonesIcon } from "lucide-react"
+import { useLocale } from "@/components/locale-provider"
 
 interface SlideProps {
   isActive: boolean
 }
 
-const reasons = [
-  { icon: Cpu, text: "Technologie IA avancée" },
-  { icon: Building2, text: "Déjà utilisée par des entreprises retail" },
-  { icon: Plug, text: "Très simple à intégrer" },
-  { icon: Rocket, text: "Rapidité de déploiement" },
-  { icon: Layers, text: "Plateforme évolutive (multi-agents)" },
-  { icon: HeadphonesIcon, text: "Support continu" },
-]
-
 export function SlideWhyUnifAI({ isActive }: SlideProps) {
+  const { t } = useLocale()
+
+  const reasons = [
+    { icon: Cpu, text: t("slide11.reasons.reason1") },
+    { icon: Building2, text: t("slide11.reasons.reason2") },
+    { icon: Plug, text: t("slide11.reasons.reason3") },
+    { icon: Rocket, text: t("slide11.reasons.reason4") },
+    { icon: Layers, text: t("slide11.reasons.reason5") },
+    { icon: HeadphonesIcon, text: t("slide11.reasons.reason6") },
+  ]
+
   return (
     <SlideWrapper gradient="blue">
       <div className="h-full flex flex-col px-6 md:px-12 lg:px-24 pt-20 pb-6 md:py-0 md:justify-center">
@@ -30,11 +33,11 @@ export function SlideWhyUnifAI({ isActive }: SlideProps) {
           {/* Header - Fixed top on mobile */}
           <div className="flex-shrink-0">
             <motion.div variants={fadeInUp} className="mb-2 md:mb-4">
-              <span className="text-xs font-mono text-primary/60 uppercase tracking-wider">11 / Pourquoi Nous</span>
+              <span className="text-xs font-mono text-primary/60 uppercase tracking-wider">{t("slide11.section")}</span>
             </motion.div>
 
             <motion.h2 variants={fadeInUp} className="text-2xl md:text-5xl font-bold mb-4 md:mb-10 tracking-tight">
-              Pourquoi <span className="text-primary">UnifAI</span> ?
+              {t("slide11.title")}
             </motion.h2>
           </div>
 
@@ -62,8 +65,7 @@ export function SlideWhyUnifAI({ isActive }: SlideProps) {
             className="flex-shrink-0 mt-4 md:mt-10 p-4 md:p-6 rounded-xl bg-gradient-to-r from-primary/20 via-accent/10 to-primary/20 border border-primary/30 text-center"
           >
             <p className="text-sm md:text-2xl font-bold">
-              UnifAI n'est pas seulement un outil :{" "}
-              <span className="text-primary">c'est un accélérateur de performance.</span>
+              {t("slide11.footer")}
             </p>
           </motion.div>
         </motion.div>

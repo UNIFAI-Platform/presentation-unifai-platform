@@ -20,7 +20,10 @@ import { SlideThank } from "@/components/slides/slide-thank"
 import { SlideChat } from "@/components/slides/slide-chat"
 import { SlideNavigation } from "@/components/slide-navigation"
 import { ModeToggle } from "@/components/mode-toggle"
+import { LanguageToggle } from "@/components/language-toggle"
+import { AutoPlayControl, AutoPlayControlRef } from "@/components/auto-play-control"
 import { FloatingIcons } from "@/components/floating-icons"
+import { IntroAnimation } from "@/components/intro-animation"
 
 import { useTheme } from "next-themes"
 import { WaveBackground } from "@/components/ui/wave-background"
@@ -79,13 +82,25 @@ export default function Presentation() {
   const [currentSlide, setCurrentSlide] = useState(1)
   const [isScrolling, setIsScrolling] = useState(false)
   const [direction, setDirection] = useState(0) // -1 pour précédent, 1 pour suivant
+  const [showIntro, setShowIntro] = useState(true)
+  const [contentReady, setContentReady] = useState(false)
   const touchStart = useRef({ x: 0, y: 0 })
   const isMobile = useIsMobile()
   const { theme } = useTheme()
   const [mounted, setMounted] = useState(false)
+  
+  // Référence pour déclencher le toggle play/pause depuis le clavier
+  const autoPlayRef = useRef<AutoPlayControlRef>(null)
 
   useEffect(() => {
     setMounted(true)
+  }, [])
+
+  // Callback quand l'animation d'intro est terminée
+  const handleIntroComplete = useCallback(() => {
+    setShowIntro(false)
+    // Petit délai pour lancer l'animation du contenu
+    setTimeout(() => setContentReady(true), 100)
   }, [])
 
   const goToSlide = useCallback((slideNumber: number) => {
@@ -158,6 +173,43 @@ export default function Presentation() {
     }
   }, [handleWheel, handleTouchStart, handleTouchEnd])
 
+  // Gestion des contrôles clavier
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      // Ne pas capturer si on est dans un input ou textarea
+      if (event.target instanceof HTMLInputElement || event.target instanceof HTMLTextAreaElement) {
+        return
+      }
+
+      switch (event.key) {
+        case 'ArrowLeft':
+        case 'ArrowUp':
+          // Slide précédente
+          if (currentSlide > 1) {
+            goToSlide(currentSlide - 1)
+          }
+          event.preventDefault()
+          break
+        case 'ArrowRight':
+        case 'ArrowDown':
+          // Slide suivante
+          if (currentSlide < slides.length) {
+            goToSlide(currentSlide + 1)
+          }
+          event.preventDefault()
+          break
+        case ' ': // Espace
+          // Toggle Play/Pause
+          autoPlayRef.current?.toggle()
+          event.preventDefault()
+          break
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [currentSlide, goToSlide])
+
   // Couleurs du gradient actuel pour desktop
   const currentGradient = slideGradients[currentSlide] || "blue"
   const gradientColors = mounted && theme === "light" ? lightGradientColors : darkGradientColors
@@ -185,51 +237,106 @@ export default function Presentation() {
 
   return (
     <main className="relative h-screen w-full overflow-hidden">
-      {/* Fond animé avec transition smooth (Desktop ET Mobile) */}
+      {/* Animation d'introduction */}
+      {showIntro && <IntroAnimation onComplete={handleIntroComplete} />}
+
+      {/* Fond animé - toujours rendu mais avec opacité contrôlée */}
       <motion.div
         className="absolute inset-0 z-0"
-        animate={{
+        initial={{ opacity: 0, scale: 1.1 }}
+        animate={{ 
+          opacity: contentReady ? 1 : 0,
+          scale: contentReady ? 1 : 1.1,
           background: `linear-gradient(135deg, ${colors.from} 0%, ${colors.via} 50%, ${colors.to} 100%)`,
         }}
         transition={{
-          duration: 0.8,
-          ease: [0.43, 0.13, 0.23, 0.96]
+          opacity: { duration: 0.6, ease: [0.4, 0, 0.2, 1] },
+          scale: { duration: 0.8, ease: [0.4, 0, 0.2, 1] },
+          background: { duration: 0.8, ease: [0.43, 0.13, 0.23, 0.96] }
         }}
       >
-        <WaveBackground />
-        <FloatingIcons currentSlide={currentSlide} />
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: contentReady ? 1 : 0 }}
+          transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+        >
+          <WaveBackground />
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: contentReady ? 1 : 0 }}
+          transition={{ duration: 0.6, delay: 0.1, ease: [0.4, 0, 0.2, 1] }}
+        >
+          <FloatingIcons currentSlide={currentSlide} />
+        </motion.div>
       </motion.div>
 
-      <div className="fixed top-4 left-4 z-50">
+      {/* Controls - Top bar avec animation d'entrée */}
+      <motion.div 
+        className="fixed top-4 left-4 z-50 flex items-center gap-2"
+        initial={{ opacity: 0, y: -15 }}
+        animate={{ opacity: contentReady ? 1 : 0, y: contentReady ? 0 : -15 }}
+        transition={{ duration: 0.4, delay: 0.15, ease: [0.4, 0, 0.2, 1] }}
+      >
         <ModeToggle />
-      </div>
-      <SlideNavigation currentSlide={currentSlide} totalSlides={slides.length} onNavigate={goToSlide} />
+      </motion.div>
+      <motion.div 
+        className="fixed top-4 right-4 z-50 flex items-center gap-2"
+        initial={{ opacity: 0, y: -15 }}
+        animate={{ opacity: contentReady ? 1 : 0, y: contentReady ? 0 : -15 }}
+        transition={{ duration: 0.4, delay: 0.15, ease: [0.4, 0, 0.2, 1] }}
+      >
+        <AutoPlayControl 
+          ref={autoPlayRef}
+          currentSlide={currentSlide} 
+          totalSlides={slides.length} 
+          onNavigate={goToSlide}
+          slideDuration={10000}
+        />
+        <LanguageToggle />
+      </motion.div>
+      
+      {/* Navigation avec animation d'entrée */}
+      <motion.div
+        initial={{ opacity: 0, y: 15 }}
+        animate={{ opacity: contentReady ? 1 : 0, y: contentReady ? 0 : 15 }}
+        transition={{ duration: 0.4, delay: 0.2, ease: [0.4, 0, 0.2, 1] }}
+      >
+        <SlideNavigation currentSlide={currentSlide} totalSlides={slides.length} onNavigate={goToSlide} />
+      </motion.div>
 
-      {/* Animation Combinée (style Canva) - Mobile ET Desktop */}
-      <AnimatePresence mode="sync" initial={false} custom={direction}>
-        <motion.div
-          key={currentSlide}
-          custom={direction}
-          variants={variants}
-          initial="enter"
-          animate="center"
-          exit="exit"
-          className="absolute inset-0 h-screen w-full overflow-hidden z-10"
-          transition={{
-            duration: isMobile ? 0.4 : 0.6,
-            ease: [0.32, 0.72, 0, 1],
-          }}
-        >
-          {(() => {
-            const SlideComponent = slides[currentSlide - 1].component
-            return currentSlide === 1 ? (
-              <SlideComponent isActive={true} onNext={() => goToSlide(2)} />
-            ) : (
-              <SlideComponent isActive={true} onNavigate={goToSlide} />
-            )
-          })()}
-        </motion.div>
-      </AnimatePresence>
+      {/* Slide Content avec animation fluide */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.92 }}
+        animate={{ opacity: contentReady ? 1 : 0, scale: contentReady ? 1 : 0.92 }}
+        transition={{ duration: 0.5, delay: 0.1, ease: [0.4, 0, 0.2, 1] }}
+        className="absolute inset-0 z-10"
+      >
+        <AnimatePresence mode="sync" initial={false} custom={direction}>
+          <motion.div
+            key={currentSlide}
+            custom={direction}
+            variants={variants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            className="absolute inset-0 h-screen w-full overflow-hidden"
+            transition={{
+              duration: isMobile ? 0.4 : 0.6,
+              ease: [0.32, 0.72, 0, 1],
+            }}
+          >
+            {(() => {
+              const SlideComponent = slides[currentSlide - 1].component
+              return currentSlide === 1 ? (
+                <SlideComponent isActive={true} onNext={() => goToSlide(2)} />
+              ) : (
+                <SlideComponent isActive={true} onNavigate={goToSlide} />
+              )
+            })()}
+          </motion.div>
+        </AnimatePresence>
+      </motion.div>
     </main>
   )
 }
