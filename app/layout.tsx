@@ -4,6 +4,7 @@ import { Inter, Geist_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { ThemeProvider } from "@/components/theme-provider"
 import { LocaleProvider } from "@/components/locale-provider"
+import { VisitorTracker } from "@/components/visitor-tracker"
 import "./globals.css"
 
 // <CHANGE> Updated fonts for corporate presentation
@@ -35,6 +36,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <LocaleProvider>
+            <VisitorTracker />
             {children}
           </LocaleProvider>
         </ThemeProvider>
